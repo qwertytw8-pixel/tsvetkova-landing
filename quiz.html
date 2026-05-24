@@ -7,47 +7,68 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f0f4f8}
+        :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f5f7fa}
         html{scroll-behavior:smooth}
-        body{font-family:'Manrope',sans-serif;color:var(--n1);line-height:1.7;background:var(--n5);min-height:100vh;display:flex;flex-direction:column}
-        .wrap{max-width:680px;margin:0 auto;padding:0 24px}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border:none;border-radius:60px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(0,188,212,.25)}
-        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,188,212,.4)}
+        body{font-family:'Manrope',sans-serif;color:var(--n1);line-height:1.7;background:var(--n5);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+        .wrap{max-width:560px;margin:0 auto;padding:0 24px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border:none;border-radius:50px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 18px rgba(0,188,212,.2)}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,188,212,.3)}
+        .btn:active{transform:translateY(0) scale(.98)}
         .btn-outline{background:transparent;border:2px solid var(--t);color:var(--t);box-shadow:none}
         .btn-outline:hover{background:var(--t);color:var(--white)}
 
+        /* MESH BG */
+        .mesh-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(135deg,#e6f5f7 0%,#d4eef2 30%,#f0f4f8 60%,#e8f0f4 100%)}
+        .mesh-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.6;animation:meshFloat 20s ease-in-out infinite alternate}
+        .mesh-blob.b1{width:600px;height:600px;background:radial-gradient(circle,rgba(0,188,212,.4),transparent 60%);top:-20%;left:-10%;animation-delay:0s}
+        .mesh-blob.b2{width:500px;height:500px;background:radial-gradient(circle,rgba(38,198,218,.35),transparent 60%);bottom:-15%;right:-8%;animation-delay:-6s}
+        .mesh-blob.b3{width:400px;height:400px;background:radial-gradient(circle,rgba(0,151,167,.28),transparent 60%);top:40%;left:50%;animation-delay:-12s}
+        @keyframes meshFloat{
+            0%{transform:translate(0,0) scale(1)}
+            25%{transform:translate(40px,-30px) scale(1.06)}
+            50%{transform:translate(-25px,50px) scale(.96)}
+            75%{transform:translate(35px,15px) scale(1.04)}
+            100%{transform:translate(-15px,-25px) scale(1)}
+        }
+
         /* NAV */
-        nav{padding:16px 0;background:var(--white);border-bottom:1px solid rgba(0,0,0,.05)}
+        nav{padding:12px 0;background:rgba(255,255,255,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04)}
         nav .wrap{display:flex;justify-content:space-between;align-items:center}
-        .logo{font-weight:800;font-size:1.2rem;color:var(--n1);text-decoration:none}.logo span{color:var(--t)}
-        .back{color:var(--n3);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}.back:hover{color:var(--t)}
+        .logo{font-weight:800;font-size:1.1rem;color:var(--n1);text-decoration:none}.logo span{color:var(--t)}
+        .back{color:var(--n3);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}.back:hover{color:var(--t)}
 
         /* QUIZ */
-        .quiz-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 0}
-        .quiz-box{background:var(--white);border-radius:24px;padding:48px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.06)}
-        .quiz-bar-wrap{background:var(--n5);border-radius:8px;height:6px;margin-bottom:32px;overflow:hidden}
-        .quiz-bar{background:linear-gradient(90deg,var(--t),var(--t3));height:100%;border-radius:8px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0}
-        .quiz-counter{text-align:center;color:var(--n4);font-size:.85rem;margin-bottom:24px}
-        .quiz-q{display:none;animation:fadeIn .4s ease}.quiz-q.active{display:block}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-        .quiz-q h3{margin-bottom:20px;font-size:1.15rem;text-align:center}
-        .quiz-opts{display:flex;flex-direction:column;gap:10px}
-        .quiz-opt{background:var(--n5);border:2px solid transparent;border-radius:14px;padding:16px 20px;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);font-family:inherit;font-size:.95rem;text-align:left}
+        .quiz-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 0}
+        .quiz-box{background:rgba(255,255,255,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:36px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.04)}
+        .quiz-bar-wrap{background:rgba(0,0,0,.05);border-radius:6px;height:5px;margin-bottom:24px;overflow:hidden}
+        .quiz-bar{background:linear-gradient(90deg,var(--t),var(--t3));height:100%;border-radius:6px;transition:width .5s cubic-bezier(.16,1,.3,1);width:0}
+        .quiz-counter{text-align:center;color:var(--n4);font-size:.82rem;margin-bottom:20px}
+        .quiz-q{display:none;animation:fadeIn .35s ease}.quiz-q.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+        .quiz-q h3{margin-bottom:16px;font-size:1.05rem;text-align:center}
+        .quiz-opts{display:flex;flex-direction:column;gap:8px}
+        .quiz-opt{background:rgba(245,247,250,.8);border:2px solid transparent;border-radius:12px;padding:13px 16px;cursor:pointer;transition:all .2s cubic-bezier(.16,1,.3,1);font-family:inherit;font-size:.9rem;text-align:left}
         .quiz-opt:hover{border-color:var(--tl);background:var(--tg)}
-        .quiz-opt.sel{border-color:var(--t);background:var(--tg);color:var(--t2);font-weight:600}
+        .quiz-opt.sel{border-color:var(--t);background:rgba(0,188,212,.08);color:var(--t2);font-weight:600}
 
         /* RESULT */
         .quiz-res{display:none;animation:fadeIn .4s ease}.quiz-res.active{display:block;text-align:center}
-        .res-icon{font-size:3rem;margin-bottom:16px}
-        .res-profile{font-size:1.8rem;font-weight:800;color:var(--t);margin-bottom:8px}
-        .res-desc{color:var(--n3);margin-bottom:24px;font-size:1.05rem;line-height:1.7}
-        .res-card{background:var(--n5);border-radius:20px;padding:28px;margin-bottom:24px;text-align:left}
-        .res-card h4{color:var(--t2);margin-bottom:8px}.res-card p{color:var(--n3);font-size:.95rem;line-height:1.7}
-        .res-timer{color:#ef4444;font-weight:700;margin:16px 0;font-size:1rem}
-        .res-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+        .res-icon{font-size:2.5rem;margin-bottom:12px}
+        .res-profile{font-size:1.5rem;font-weight:800;color:var(--t);margin-bottom:6px}
+        .res-desc{color:var(--n3);margin-bottom:20px;font-size:.95rem;line-height:1.7}
+        .res-card{background:rgba(245,247,250,.8);border-radius:16px;padding:22px;margin-bottom:20px;text-align:left}
+        .res-card h4{color:var(--t2);margin-bottom:6px;font-size:.95rem}.res-card p{color:var(--n3);font-size:.88rem;line-height:1.6}
+        .res-timer{color:#ef4444;font-weight:700;margin:12px 0;font-size:.95rem}
+        .res-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
     </style>
 </head>
 <body>
+
+<div class="mesh-bg">
+    <div class="mesh-blob b1"></div>
+    <div class="mesh-blob b2"></div>
+    <div class="mesh-blob b3"></div>
+</div>
 
 <nav>
     <div class="wrap">
@@ -105,15 +126,15 @@
         <div class="quiz-q" data-q="5">
             <h3>Что для тебя важнее в обучении?</h3>
             <div class="quiz-opts">
-                <div class="quiz-opt" data-v="steps">Пошаговые инструкции — делай раз, делай два</div>
-                <div class="quiz-opt" data-v="examples">Разбор реальных примеров и кейсов</div>
-                <div class="quiz-opt" data-v="practice">Максимум практики с первого урока</div>
+                <div class="quiz-opt" data-v="steps">Пошаговые инструкции</div>
+                <div class="quiz-opt" data-v="examples">Разбор реальных примеров</div>
+                <div class="quiz-opt" data-v="practice">Максимум практики</div>
                 <div class="quiz-opt" data-v="feedback">Обратная связь от преподавателя</div>
             </div>
         </div>
 
         <div class="quiz-q" data-q="6">
-            <h3>Какой тип контента ты хочешь создавать?</h3>
+            <h3>Какой тип контента хочешь создавать?</h3>
             <div class="quiz-opts">
                 <div class="quiz-opt" data-v="portraits">Портреты и нейрофото</div>
                 <div class="quiz-opt" data-v="products">Фото товаров и реклама</div>
@@ -143,7 +164,7 @@
         </div>
 
         <div class="quiz-q" data-q="9">
-            <h3>Сколько времени готов(а) уделять обучению?</h3>
+            <h3>Сколько времени готов(а) уделять?</h3>
             <div class="quiz-opts">
                 <div class="quiz-opt" data-v="15min">15–30 минут в день</div>
                 <div class="quiz-opt" data-v="1hour">1 час в день</div>
@@ -166,7 +187,7 @@
             <div class="res-icon" id="resIcon"></div>
             <div class="res-profile" id="rProf"></div>
             <div class="res-desc" id="rDesc"></div>
-            <div class="res-card" id="resCard">
+            <div class="res-card">
                 <h4 id="resRec"></h4>
                 <p id="resWhy"></p>
             </div>
@@ -215,30 +236,26 @@ function showRes(){
 }
 
 function profile(){
-    const goal=ans[3],exp=ans[2],content=ans[6];
+    const goal=ans[3],exp=ans[2];
 
     if(goal==='income'||ans[7]==='want'){
-        return{icon:'🚀',name:'Начинающий заработок',desc:'Ты хочешь монетизировать нейросети — это отличная цель. Курс даст тебе все инструменты для старта.',
-            rec:'Рекомендуем: 1 ступень — полный курс',why:'Фото, видео, тексты + поиск клиентов и воронка продаж. Всё что нужно чтобы начать зарабатывать.'};
+        return{icon:'🚀',name:'Начинающий заработок',desc:'Ты хочешь монетизировать нейросети — это отличная цель.',
+            rec:'Рекомендуем: 1 ступень — 12 990₽',why:'Фото, видео, тексты + поиск клиентов. Всё чтобы начать зарабатывать.'};
     }
     if(goal==='business'){
-        return{icon:'💼',name:'Бизнес-применение',desc:'Нейросети сэкономят тебе время и деньги на контенте. Сможешь делать сам(а) то, за что раньше платил(а).',
-            rec:'Рекомендуем: 1 + 2 ступень — полный пакет',why:'Продвинутые техники + TikTok и Reels для продвижения бизнеса. Максимум навыков.'};
+        return{icon:'💼',name:'Бизнес-применение',desc:'Нейросети сэкономят время и деньги на контенте.',
+            rec:'Рекомендуем: 1 + 2 ступень — 19 990₽',why:'Продвинутые техники + автоматизация. Максимум навыков для бизнеса.'};
     }
     if(goal==='work'){
-        return{icon:'💻',name:'Профессиональный рост',desc:'Нейросети — это суперсила для любого специалиста. Умение работать с ИИ выделит тебя среди конкурентов.',
-            rec:'Рекомендуем: 1 ступень — полный курс',why:'60+ навыков, которые можно применить в любой работе. Фото, видео, тексты, автоматизация.'};
+        return{icon:'💻',name:'Профессиональный рост',desc:'Нейросети — суперсила для любого специалиста.',
+            rec:'Рекомендуем: 1 ступень — 12 990₽',why:'60+ навыков которые можно применить в любой работе.'};
     }
     if(exp==='none'||exp==='little'){
-        return{icon:'🎨',name:'Творческий старт',desc:'Нейросети — это проще, чем кажется. Начни с мини-курса и убедись сам(а).',
-            rec:'Рекомендуем: Быстрый старт — мини-курс за 1 990₽',why:'5 уроков, пошаговые инструкции, 50 промптов. Идеально для первого знакомства с нейросетями.'};
+        return{icon:'🎨',name:'Творческий старт',desc:'Нейросети проще чем кажется. Начни с мини-курса.',
+            rec:'Рекомендуем: Быстрый старт — 1 990₽',why:'5 уроков, пошаговые инструкции, 50 промптов. Идеально для начала.'};
     }
-    if(content==='portraits'){
-        return{icon:'📸',name:'Мастер нейрофото',desc:'Портреты — самый популярный формат. Нейросети делают потрясающие фото, которые невозможно отличить от настоящих.',
-            rec:'Рекомендуем: 1 ступень — полный курс',why:'Генерация, стилизация, обработка — всё про фото и портреты. Плюс поиск клиентов.'};
-    }
-    return{icon:'✨',name:'Творческий исследователь',desc:'Ты хочешь попробовать всё — и это правильно. Нейросети открывают безграничные возможности для творчества.',
-        rec:'Рекомендуем: 1 + 2 ступень — полный пакет',why:'Фото, видео, тексты, арт, логотипы — всё в одном курсе. Максимум навыков и возможностей.'};
+    return{icon:'✨',name:'Творческий исследователь',desc:'Ты хочешь попробовать всё — и это правильно.',
+        rec:'Рекомендуем: 1 + 2 ступень — 19 990₽',why:'Фото, видео, тексты, арт — всё в одном курсе. Максимум возможностей.'};
 }
 </script>
 
