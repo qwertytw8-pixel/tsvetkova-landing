@@ -8,10 +8,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
         :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f5f7fa;--n6:#eef2f7}
-        html{scroll-behavior:smooth}
+        html{scroll-behavior:smooth;scroll-snap-type:y proximity}
         body{font-family:'Manrope',sans-serif;color:var(--n1);line-height:1.7;background:var(--n5);overflow-x:hidden}
         .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-        section{padding:80px 0}
+        section{padding:80px 0;scroll-snap-align:start}
         h1{font-size:clamp(2rem,4.5vw,2.8rem);font-weight:800;line-height:1.12;letter-spacing:-.025em}
         h2{font-size:clamp(1.3rem,2.8vw,1.8rem);font-weight:700;text-align:center;margin-bottom:32px;letter-spacing:-.015em}
         .section-label{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--t);margin-bottom:8px}
@@ -52,11 +52,17 @@
         /* HERO */
         .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 0 50px;background:linear-gradient(180deg,transparent,rgba(245,247,250,.6))}
         .hero-content{position:relative;z-index:1;text-align:center;width:100%}
-        .hero h1{margin-bottom:14px}.hero h1 .accent{color:var(--t)}
-        .hero-sub{font-size:1.02rem;color:var(--n3);max-width:480px;margin:0 auto 24px;line-height:1.7}
-        .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-        .hero-stats{display:flex;justify-content:center;gap:32px;margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,.06)}
-        .hero-stat{text-align:center}.hero-stat .num{font-size:1.4rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.75rem;color:var(--n4);margin-top:2px}
+        .hero h1{margin-bottom:16px;font-size:clamp(2.2rem,5vw,3.2rem)}.hero h1 .accent{color:var(--t)}
+        .hero-sub{font-size:1.12rem;color:var(--n3);max-width:520px;margin:0 auto 28px;line-height:1.7}
+        .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+        .hero-stats{display:flex;justify-content:center;gap:36px;margin-top:28px;padding-top:22px;border-top:1px solid rgba(0,0,0,.06)}
+        .hero-stat{text-align:center}.hero-stat .num{font-size:1.5rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.78rem;color:var(--n4);margin-top:2px}
+
+        /* SCROLL DOWN BUTTON */
+        .scroll-down{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:90;transition:all .25s;animation:bounceDown 2s ease-in-out infinite}
+        .scroll-down:hover{transform:translateY(3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+        .scroll-down svg{width:18px;height:18px;color:var(--t)}
+        @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
         /* SECTION ALTERNATING */
         .bg-white{background:rgba(255,255,255,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
@@ -603,6 +609,9 @@ function toggleReview(id,btn){const el=document.getElementById(id);el.classList.
 // CONTACT
 function sendToTelegram(e){e.preventDefault();const n=document.getElementById('contactName').value,c=document.getElementById('contactContact').value,m=document.getElementById('contactMsg').value;window.open(`https://t.me/TsvetkovaKaterina?text=${encodeURIComponent('📝 Заявка\n\n👤 '+n+'\n📱 '+c+'\n💬 '+m)}`,'_blank')}
 </script>
+
+<!-- SCROLL DOWN BUTTON -->
+<a class="scroll-down" href="#for-whom" title="Листай вниз"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
 
 </body>
 </html>
