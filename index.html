@@ -25,11 +25,12 @@
         .stagger-1{transition-delay:.08s}.stagger-2{transition-delay:.16s}.stagger-3{transition-delay:.24s}.stagger-4{transition-delay:.32s}
 
         /* MESH GRADIENT BG */
-        .mesh-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:var(--n5)}
-        .mesh-blob{position:absolute;border-radius:50%;filter:blur(100px);opacity:.4;animation:meshFloat 20s ease-in-out infinite alternate}
-        .mesh-blob.b1{width:600px;height:600px;background:radial-gradient(circle,rgba(0,188,212,.3),transparent 70%);top:-15%;left:-10%;animation-delay:0s}
-        .mesh-blob.b2{width:500px;height:500px;background:radial-gradient(circle,rgba(38,198,218,.25),transparent 70%);bottom:-10%;right:-8%;animation-delay:-7s}
-        .mesh-blob.b3{width:400px;height:400px;background:radial-gradient(circle,rgba(0,151,167,.2),transparent 70%);top:40%;left:50%;animation-delay:-14s}
+        .mesh-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(135deg,#f0f9fa 0%,#e8f4f8 30%,#f5f7fa 60%,#eef2f7 100%)}
+        .mesh-blob{position:absolute;border-radius:50%;filter:blur(120px);opacity:.5;animation:meshFloat 25s ease-in-out infinite alternate}
+        .mesh-blob.b1{width:700px;height:700px;background:radial-gradient(circle,rgba(0,188,212,.35),transparent 65%);top:-20%;left:-15%;animation-delay:0s}
+        .mesh-blob.b2{width:600px;height:600px;background:radial-gradient(circle,rgba(38,198,218,.28),transparent 65%);bottom:-15%;right:-10%;animation-delay:-8s}
+        .mesh-blob.b3{width:500px;height:500px;background:radial-gradient(circle,rgba(0,151,167,.22),transparent 65%);top:35%;left:45%;animation-delay:-16s}
+        .mesh-blob.b4{width:450px;height:450px;background:radial-gradient(circle,rgba(178,235,242,.3),transparent 65%);top:60%;left:10%;animation-delay:-4s}
         @keyframes meshFloat{
             0%{transform:translate(0,0) scale(1)}
             25%{transform:translate(50px,-40px) scale(1.08)}
@@ -58,9 +59,8 @@
         .hero-stat{text-align:center}.hero-stat .num{font-size:1.4rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.75rem;color:var(--n4);margin-top:2px}
 
         /* SECTION ALTERNATING */
-        .bg-white{background:var(--white)}
-        .bg-light{background:var(--n5)}
-        .bg-lighter{background:var(--n6)}
+        .bg-white{background:rgba(255,255,255,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+        .bg-light{background:rgba(245,247,250,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 
         /* DIVIDER */
         .divider{height:1px;background:linear-gradient(90deg,transparent 5%,rgba(0,188,212,.12) 50%,transparent 95%)}
@@ -129,7 +129,7 @@
         .review-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tg)}
         .review-avatar img{width:100%;height:100%;object-fit:cover}
         .review-info h4{font-size:.88rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.72rem;color:var(--n4)}
-        .review-stars{color:var(--t);font-size:.75rem;margin-bottom:6px}
+        .review-stars{color:var(--t);font-size:.82rem;margin-bottom:8px;letter-spacing:2px}
         .review-text{color:var(--n2);font-size:.82rem;line-height:1.7}
         .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
         .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.75rem;cursor:pointer;padding:0;margin-top:5px}
@@ -237,6 +237,7 @@
     <div class="mesh-blob b1"></div>
     <div class="mesh-blob b2"></div>
     <div class="mesh-blob b3"></div>
+    <div class="mesh-blob b4"></div>
 </div>
 
 <!-- NAV -->
@@ -285,7 +286,7 @@
             <div class="intro-text">
                 <h2>Привет, я Екатерина</h2>
                 <p>Мне 43 года, и последние 3 года я живу и дышу нейросетями. Начинала с того, что просто хотела красивые фото для себя — а сейчас обучаю других создавать контент, который раньше стоил десятки тысяч рублей.</p>
-                <p>Я создала бота Nano Banana, веду канал с промптами и обучающую группу. Через мои курсы прошли десятки учеников — от мам в декрете до фрилансеров и предпринимателей.</p>
+                <p>Веду канал с промптами и обучающую группу. Через мои курсы прошли десятки учеников — от мам в декрете до фрилансеров и предпринимателей.</p>
                 <div class="intro-quote">«Нейросети — это не сложная технология. Это инструмент, который даёт свободу. И я научу тебя им пользоваться.»</div>
             </div>
         </div>
@@ -328,16 +329,16 @@
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-35-48.jpg" alt=""></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-35-53.jpg" alt=""></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-08.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-04.mp4"><video src="student-works/video_2026-05-24_16-36-04.mp4" muted loop preload="none"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-04.mp4"><video src="student-works/video_2026-05-24_16-36-04.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-18.jpg" alt=""></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-21.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-15.mp4"><video src="student-works/video_2026-05-24_16-36-15.mp4" muted loop preload="none"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-15.mp4"><video src="student-works/video_2026-05-24_16-36-15.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-42.jpg" alt=""></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-45.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-33.mp4"><video src="student-works/video_2026-05-24_16-36-33.mp4" muted loop preload="none"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-33.mp4"><video src="student-works/video_2026-05-24_16-36-33.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-37-12.jpg" alt=""></div>
                 <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-37-17.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-52.mp4"><video src="student-works/video_2026-05-24_16-36-52.mp4" muted loop preload="none"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-52.mp4"><video src="student-works/video_2026-05-24_16-36-52.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
             </div>
             <button class="scroll-nav scroll-next" onclick="scrollShowcase(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
@@ -351,10 +352,10 @@
     <div class="wrap">
         <h2 class="fade-up">Что ты получишь после курса</h2>
         <div class="results-grid">
-            <div class="result-card fade-up stagger-1"><h3>Портфолио</h3><p>20+ готовых работ для показа клиентам</p></div>
-            <div class="result-card fade-up stagger-2"><h3>Навыки</h3><p>Заработок на нейросетях — фриланс или бизнес</p></div>
-            <div class="result-card fade-up stagger-3"><h3>Сообщество</h3><p>Закрытая группа с промптами и поддержкой</p></div>
-            <div class="result-card fade-up stagger-4"><h3>Экономия</h3><p>Делай за 10 минут то что раньше часы</p></div>
+            <div class="result-card fade-up stagger-1"><h3>Портфолио из 20+ работ</h3><p>Фото, видео, арт, логотипы — готовые примеры для показа клиентам и работодателям</p></div>
+            <div class="result-card fade-up stagger-2"><h3>Навыки для заработка</h3><p>Сможешь делать нейрофото, видео и тексты на заказ. Фриланс, подработка или свой бизнес</p></div>
+            <div class="result-card fade-up stagger-3"><h3>Закрытое сообщество</h3><p>Группа с промптами, обновлениями, обратной связью и поддержкой единомышленников</p></div>
+            <div class="result-card fade-up stagger-4"><h3>Экономия времени и денег</h3><p>Делай за 10 минут то, что раньше занимало часы и стоило тысячи рублей</p></div>
         </div>
     </div>
 </section>
@@ -367,9 +368,9 @@
         <h2 class="fade-up">Программа курса</h2>
         <div class="modules">
             <div class="module fade-up"><div class="module-num">1</div><div class="module-content"><h3>Основы нейросетей</h3><p>Как работают ИИ, инструменты, начало с нуля. Настройка рабочего пространства.</p></div></div>
-            <div class="module fade-up"><div class="module-num">2</div><div class="module-content"><h3>Генерация изображений</h3><p>Фото, арт, логотипы. Промпты, референсы, стили. Midjourney, DALL-E, Stable Diffusion.</p></div></div>
-            <div class="module fade-up"><div class="module-num">3</div><div class="module-content"><h3>Видео и анимация</h3><p>Kling, Seedance. Анимация фото, монтаж с ИИ, Reels и TikTok.</p></div></div>
-            <div class="module fade-up"><div class="module-num">4</div><div class="module-content"><h3>Тексты и контент</h3><p>Посты, статьи, сценарии. ChatGPT, Claude. Автоматизация контента.</p></div></div>
+            <div class="module fade-up"><div class="module-num">2</div><div class="module-content"><h3>Генерация изображений</h3><p>Фото, арт, логотипы. Промпты, референсы, стили. Работа с разными нейросетями.</p></div></div>
+            <div class="module fade-up"><div class="module-num">3</div><div class="module-content"><h3>Видео и анимация</h3><p>Генерация видео, анимация фото, монтаж с ИИ. Reels и TikTok.</p></div></div>
+            <div class="module fade-up"><div class="module-num">4</div><div class="module-content"><h3>Тексты и контент</h3><p>Посты, статьи, сценарии. Нейросети для текстов. Автоматизация контента.</p></div></div>
             <div class="module fade-up"><div class="module-num">5</div><div class="module-content"><h3>Бизнес и заработок</h3><p>Клиенты, воронка, монетизация. Фриланс и свой бизнес.</p></div></div>
             <div class="module fade-up"><div class="module-num">6</div><div class="module-content"><h3>Продвинутые техники</h3><p>Боты, автоматизация, интеграции. Telegram-боты, автопостинг.</p></div></div>
         </div>
@@ -385,13 +386,13 @@
         <div class="reviews-scroll fade-up">
             <button class="scroll-nav scroll-prev" onclick="scrollReviews(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
             <div class="reviews-track" id="reviewsTrack">
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Александра.jpg" alt=""></div><div class="review-info"><h4>Александра ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt1">Занятия стали настоящим открытием! Екатерина доступно объясняет основы, делится секретами мастерства и вдохновляет на создание уникальных работ. Рекомендую всем!</div><button class="review-toggle" onclick="toggleReview('rt1',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Мальгина Надежда.jpg" alt=""></div><div class="review-info"><h4>Надежда ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt2">Записалась на курс и не пожалела! Заразила мужа. В шоке от того как это работает. Советую всем!</div><button class="review-toggle" onclick="toggleReview('rt2',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Ирина.jpg" alt=""></div><div class="review-info"><h4>Ирина ★★★★★</h4><span>Мама 4 детей</span></div></div><div class="review-text collapsed" id="rt3">Нейронка стала 6-й любовью! У меня 4-ро детей но это за гранью. Спасибо за терпение и внимание!</div><button class="review-toggle" onclick="toggleReview('rt3',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Валерия.jpg" alt=""></div><div class="review-info"><h4>Валерия ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt4">Стресс ушёл, появился мой стиль. Катя на связи 24/7. Теперь в жизни — мой собственный мир.</div><button class="review-toggle" onclick="toggleReview('rt4',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Светлана Ускова.jpg" alt=""></div><div class="review-info"><h4>Светлана ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt5">Одно из лучших обучений. Нейросети стали частью жизни. Катя мотивирует двигаться дальше!</div><button class="review-toggle" onclick="toggleReview('rt5',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Наталья.jpg" alt=""></div><div class="review-info"><h4>Наталья ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt6">Курс понятный и структурированный. Много практики. Получила базу и понимание куда двигаться.</div><button class="review-toggle" onclick="toggleReview('rt6',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Татьяна.jpg" alt=""></div><div class="review-info"><h4>Татьяна ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt7">Объясняет простыми словами. Всё по шагам. Отдельный плюс — поддержка и обратная связь!</div><button class="review-toggle" onclick="toggleReview('rt7',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Александра.jpg" alt=""></div><div class="review-info"><h4>Александра</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt1">Занятия нейрографикой с Екатериной стали настоящим открытием! Её умение создавать атмосферу доверия и комфорта позволяет раскрыть творческий потенциал даже начинающим ученикам. Екатерина доступно объясняет основы, делится секретами мастерства и вдохновляет на создание уникальных работ. Благодаря её поддержке я научилась выражать эмоции через рисунок и почувствовала гармонию. Рекомендую всем!</div><button class="review-toggle" onclick="toggleReview('rt1',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Мальгина Надежда.jpg" alt=""></div><div class="review-info"><h4>Надежда</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt2">Как человек далёкий от компьютеров, просматривая видео и фото Екатерины, приходила в дикий восторг. Стала вынашивать мысль пройти обучение. Записалась на курс и не пожалела — в шоке от того как это работает! Заразила мужа этими видео и фото. Огромная благодарность Кате за подробный урок. Советую всем пройти этот курс!</div><button class="review-toggle" onclick="toggleReview('rt2',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Ирина.jpg" alt=""></div><div class="review-info"><h4>Ирина</h4><span>Мама 4 детей</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt3">Это просто невероятно! Спасибо огромное за такое крутое погружение в нейронку. Я перестала спать потому что процесс затягивает так что оторваться невозможно. Нейронка благодаря тебе стала 6-й любовью — у меня 4-ро детей и их я конечно люблю больше, но это что-то за гранью. Спасибо за внимание, за терпение!</div><button class="review-toggle" onclick="toggleReview('rt3',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Валерия.jpg" alt=""></div><div class="review-info"><h4>Валерия</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt4">На работе стресс, не ловила вайб, жизнь не в кайф. В какой-то день поняла: хватит так жить. Открыла нейро — новый мир, новый свет. Этот курс — реальный, по делу. Катя с нами на связи 24/7. Теперь в работе и в жизни — мой собственный мир. Все нейронки под рукой, крутишь как хочешь!</div><button class="review-toggle" onclick="toggleReview('rt4',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Светлана Ускова.jpg" alt=""></div><div class="review-info"><h4>Светлана</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt5">Одно из лучших обучений которые у меня были. Материал подаётся просто и понятно без воды. Нейросети стали частью повседневной жизни — использую в работе, дома, для задач с детьми. Катя всегда на связи, отвечает на вопросы, невероятно мотивирует. Искренне рекомендую!</div><button class="review-toggle" onclick="toggleReview('rt5',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Наталья.jpg" alt=""></div><div class="review-info"><h4>Наталья</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt6">Курс понятный и хорошо структурированный. Много практики — задания помогли закрепить теорию. Получила хорошую базу и понимание что изучать дальше и как применять знания в реальных проектах. Рекомендую курс тем кто хочет получить практический опыт!</div><button class="review-toggle" onclick="toggleReview('rt6',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Татьяна.jpg" alt=""></div><div class="review-info"><h4>Татьяна</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt7">Объясняет простыми словами и по делу. Всё разложено по шагам: сначала база, потом практика. Было много примеров поэтому стало понятнее как применять нейросети в реальных задачах. Отдельный плюс — поддержка и обратная связь. Курс рекомендую!</div><button class="review-toggle" onclick="toggleReview('rt7',this)">Читать полностью</button></div>
             </div>
             <button class="scroll-nav scroll-next" onclick="scrollReviews(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
@@ -454,23 +455,6 @@
     <h3>Поторопись — скидка действует ограниченное время!</h3>
     <div class="timer-val" id="globalTimer">47:59:59</div>
 </div>
-
-<div class="divider"></div>
-
-<!-- ABOUT -->
-<section class="about bg-light" id="about">
-    <div class="wrap">
-        <h2 class="fade-up">Преподаватель</h2>
-        <div class="about-inner fade-up">
-            <div class="about-avatar"><img src="media/ekaterina.jpg" alt="Екатерина" onerror="this.style.display='none'"></div>
-            <div class="about-info">
-                <h3>Екатерина Цветкова</h3>
-                <p>Эксперт по нейросетям. Обучаю работе с ИИ — от генерации фото до автоматизации.</p>
-                <p>Веду канал с промптами и обучающую группу. Помогаю ученикам начать зарабатывать.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
 <div class="divider"></div>
 
