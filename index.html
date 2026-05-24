@@ -85,34 +85,35 @@
         .divider{height:1px;background:linear-gradient(90deg,transparent 5%,rgba(0,188,212,.12) 50%,transparent 95%)}
         .section-full{min-height:100vh;display:flex;align-items:center}
 
-        /* INTRO */
-        .intro{padding:80px 0}
-        .intro-inner{display:flex;gap:40px;align-items:center;max-width:860px;margin:0 auto}
-        .intro-photo{width:180px;height:180px;border-radius:50%;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,var(--tl),var(--tg));box-shadow:0 12px 40px rgba(0,188,212,.12)}
+        /* INTRO + FOR WHOM — COMBINED */
+        .intro-for{padding:50px 0}
+        .intro-for-inner{display:flex;gap:40px;align-items:flex-start;max-width:1000px;margin:0 auto}
+        .intro-left{flex:0 0 280px}
+        .intro-photo{width:140px;height:140px;border-radius:50%;overflow:hidden;background:linear-gradient(135deg,var(--tl),var(--tg));box-shadow:0 10px 32px rgba(0,188,212,.12);margin-bottom:12px}
         .intro-photo img{width:100%;height:100%;object-fit:cover}
-        .intro-text{flex:1}.intro-text h2{text-align:left;margin-bottom:10px;font-size:1.5rem}.intro-text p{color:var(--n3);font-size:.95rem;margin-bottom:8px;line-height:1.7}
-        .intro-text .intro-quote{font-style:italic;color:var(--t2);font-weight:600;font-size:.98rem;margin-top:14px;padding-left:16px;border-left:3px solid var(--tl)}
-
-        /* FOR WHOM — FULLSCREEN */
-        .for-whom{padding:100px 0}
-        .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-        .card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:28px 18px;text-align:center;transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 12px rgba(0,0,0,.03)}
-        .card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,188,212,.1);border-color:var(--tl)}
+        .intro-name{font-size:1.1rem;font-weight:700;margin-bottom:4px}
+        .intro-role{color:var(--t);font-size:.82rem;font-weight:600;margin-bottom:8px}
+        .intro-bio{color:var(--n3);font-size:.85rem;line-height:1.6}
+        .intro-right{flex:1}
+        .intro-right h2{text-align:left;margin-bottom:16px;font-size:1.4rem}
+        .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        .card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px 14px;text-align:center;transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 10px rgba(0,0,0,.03)}
+        .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,188,212,.08);border-color:var(--tl)}
         .card:active{transform:translateY(0) scale(.98)}
-        .card-icon{width:52px;height:52px;border-radius:15px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-        .card-icon svg{width:24px;height:24px;color:var(--t)}
-        .card h3{margin-bottom:6px;font-size:1rem}.card p{color:var(--n3);font-size:.84rem;line-height:1.5}
+        .card-icon{width:42px;height:42px;border-radius:12px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+        .card-icon svg{width:20px;height:20px;color:var(--t)}
+        .card h3{margin-bottom:4px;font-size:.9rem}.card p{color:var(--n3);font-size:.8rem;line-height:1.4}
 
-        /* SHOWCASE — FULLSCREEN */
-        .showcase{padding:100px 0}
-        .showcase-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:32px;flex-wrap:wrap;gap:14px}
-        .showcase-text{max-width:440px}.showcase-text h2{text-align:left;margin-bottom:8px}.showcase-text p{color:var(--n3);font-size:.9rem}
-        .showcase-tags{display:flex;gap:6px;flex-wrap:wrap}
-        .showcase-tag{padding:4px 14px;border-radius:16px;font-size:.75rem;font-weight:600;background:rgba(255,255,255,.7);color:var(--n2);border:1px solid rgba(0,0,0,.05)}
-        .showcase-scroll{position:relative;overflow:hidden;padding:0 24px}
-        .showcase-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:none;scroll-behavior:auto;padding:8px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+        /* SHOWCASE — WIDE */
+        .showcase{padding:60px 0}
+        .showcase-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+        .showcase-text{max-width:400px}.showcase-text h2{text-align:left;margin-bottom:6px}.showcase-text p{color:var(--n3);font-size:.85rem}
+        .showcase-tags{display:flex;gap:5px;flex-wrap:wrap}
+        .showcase-tag{padding:3px 12px;border-radius:14px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.7);color:var(--n2);border:1px solid rgba(0,0,0,.05)}
+        .showcase-scroll{position:relative;overflow:hidden;padding:0 16px}
+        .showcase-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:none;scroll-behavior:auto;padding:6px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
         .showcase-track::-webkit-scrollbar{display:none}
-        .showcase-item{flex:0 0 240px;border-radius:18px;overflow:hidden;aspect-ratio:9/16;position:relative;cursor:pointer;background:var(--n6);box-shadow:0 4px 20px rgba(0,0,0,.06)}
+        .showcase-item{flex:0 0 200px;border-radius:14px;overflow:hidden;aspect-ratio:9/16;position:relative;cursor:pointer;background:var(--n6);box-shadow:0 4px 16px rgba(0,0,0,.05)}
         .showcase-item img,.showcase-item video{width:100%;height:100%;object-fit:cover;display:block}
         .video-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.5);color:var(--white);font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:6px;display:flex;align-items:center;gap:3px;backdrop-filter:blur(4px)}
         .video-badge svg{width:10px;height:10px}
@@ -124,14 +125,14 @@
         .scroll-nav svg{width:16px;height:16px;color:var(--n1)}
         .scroll-prev{left:0}.scroll-next{right:0}
 
-        /* RESULTS — FULLSCREEN */
-        .results{padding:100px 0}
-        .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:700px;margin:0 auto}
-        .result-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:20px;padding:32px 28px;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.03)}
-        .result-card:hover{box-shadow:0 8px 28px rgba(0,188,212,.08);border-color:var(--tl)}
-        .result-icon{width:48px;height:48px;border-radius:14px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
-        .result-icon svg{width:24px;height:24px;color:var(--t)}
-        .result-card h3{color:var(--t2);margin-bottom:6px;font-size:1rem}.result-card p{color:var(--n3);font-size:.85rem;line-height:1.6}
+        /* RESULTS — ROW */
+        .results{padding:60px 0}
+        .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+        .result-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:16px;padding:20px;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+        .result-card:hover{box-shadow:0 6px 20px rgba(0,188,212,.07);border-color:var(--tl)}
+        .result-icon{width:42px;height:42px;border-radius:12px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+        .result-icon svg{width:20px;height:20px;color:var(--t)}
+        .result-card h3{color:var(--t2);margin-bottom:4px;font-size:.9rem}.result-card p{color:var(--n3);font-size:.8rem;line-height:1.5}
 
         /* PROGRAM — FULLSCREEN */
         .program{padding:100px 0}
@@ -157,9 +158,9 @@
         .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.76rem;cursor:pointer;padding:0;margin-top:6px}
         .review-toggle:hover{text-decoration:underline}
 
-        /* PRICING — FULLSCREEN */
-        .pricing{padding:100px 0}
-        .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
+        /* PRICING — WIDE */
+        .pricing{padding:80px 0}
+        .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
         .price-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:32px 24px;text-align:center;transition:all .25s;display:flex;flex-direction:column;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.03)}
         .price-card.hot{border-color:var(--t);transform:scale(1.03);box-shadow:0 20px 50px rgba(0,188,212,.12)}
         .price-card.hot::before{content:'Рекомендуем';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);padding:4px 18px;border-radius:16px;font-size:.74rem;font-weight:700}
@@ -313,6 +314,7 @@
 <!-- SIDE NAV -->
 <div class="side-nav" id="sideNav">
     <a href="#hero"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="side-nav-tooltip">Главная</span></a>
+    <a href="#for-whom"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="side-nav-tooltip">Для кого</span></a>
     <a href="#showcase"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span class="side-nav-tooltip">Работы</span></a>
     <a href="#program"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="side-nav-tooltip">Программа</span></a>
     <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="side-nav-tooltip">Отзывы</span></a>
@@ -341,33 +343,27 @@
     </div>
 </section>
 
-<!-- EKATERINA -->
-<section class="intro">
+<!-- EKATERINA + FOR WHOM — COMBINED -->
+<section class="intro-for bg-light" id="for-whom">
     <div class="wrap">
-        <div class="intro-inner fade-up">
-            <div class="intro-photo"><img src="media/ekaterina.jpg" alt="Екатерина Цветкова" onerror="this.style.display='none'"></div>
-            <div class="intro-text">
-                <h2>Привет, я Екатерина</h2>
-                <p>Мне 41 год, и я увлечена нейросетями. Начинала с того, что просто хотела красивые фото для себя — а сейчас обучаю других создавать контент, который раньше стоил десятки тысяч рублей.</p>
-                <p>Веду канал с промптами и обучающую группу. Через мои курсы прошли десятки учеников — от мам в декрете до фрилансеров и предпринимателей.</p>
-                <div class="intro-quote">«Нейросети — это не сложная технология. Это инструмент, который даёт свободу. И я научу тебя им пользоваться.»</div>
+        <div class="intro-for-inner fade-up">
+            <div class="intro-left">
+                <div class="intro-photo"><img src="media/ekaterina.jpg" alt="Екатерина Цветкова" onerror="this.style.display='none'"></div>
+                <div class="intro-name">Екатерина Цветкова</div>
+                <div class="intro-role">Эксперт по нейросетям</div>
+                <div class="intro-bio">Мне 41 год. Обучаю работе с ИИ — от фото до видео. Веду канал с промптами и обучающую группу. Через мои курсы прошли десятки учеников.</div>
             </div>
-        </div>
-    </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- FOR WHOM — FULLSCREEN -->
-<section class="for-whom bg-light section-full" id="for-whom">
-    <div class="wrap">
-        <h2 class="fade-up">Для кого этот курс</h2>
-        <div class="cards">
-            <div class="card fade-up stagger-1"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z"/></svg></div><h3>Мама в декрете</h3><p>Подработка из дома без опыта. Генерируй фото и видео для клиентов</p></div>
-            <div class="card fade-up stagger-2"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Фрилансер</h3><p>Добавь нейросети в арсенал. Чек выше, клиентов больше</p></div>
-            <div class="card fade-up stagger-3"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Маркетплейсы</h3><p>Инфографика и карточки товаров — не нужен дизайнер</p></div>
-            <div class="card fade-up stagger-4"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Мастера</h3><p>Ресницы, маникюр, торты — красиво веди свои страницы в соцсетях</p></div>
-            <div class="card fade-up stagger-5"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Креативные люди</h3><p>Хочешь творить? Нейросети — твой инструмент для самовыражения</p></div>
+            <div class="intro-right">
+                <h2>Для кого этот курс</h2>
+                <div class="cards">
+                    <div class="card stagger-1"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z"/></svg></div><h3>Мама в декрете</h3><p>Подработка из дома</p></div>
+                    <div class="card stagger-2"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Фрилансер</h3><p>Чек выше, клиентов больше</p></div>
+                    <div class="card stagger-3"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Маркетплейсы</h3><p>Карточки товаров без дизайнера</p></div>
+                    <div class="card stagger-4"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Мастера</h3><p>Ресницы, маникюр, торты</p></div>
+                    <div class="card stagger-5"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Креативные</h3><p>Творчество и самовыражение</p></div>
+                    <div class="card stagger-6"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3>Все возрасты</h3><p>От 10 до 60+ лет</p></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
