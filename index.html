@@ -10,20 +10,20 @@
         :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f0f4f8}
         html{scroll-behavior:smooth}
         body{font-family:'Manrope',sans-serif;color:var(--n1);line-height:1.7;background:var(--white);overflow-x:hidden}
-        .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+        .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
         section{padding:80px 0;position:relative}
-        h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.15;letter-spacing:-.02em}
-        h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;text-align:center;margin-bottom:36px;letter-spacing:-.01em}
-        .section-label{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--t);margin-bottom:10px}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border:none;border-radius:60px;font-family:inherit;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(0,188,212,.25)}
-        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,188,212,.4)}
+        h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.15;letter-spacing:-.02em}
+        h2{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:700;text-align:center;margin-bottom:32px;letter-spacing:-.01em}
+        .section-label{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--t);margin-bottom:8px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border:none;border-radius:50px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 18px rgba(0,188,212,.22)}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,188,212,.35)}
         .btn-outline{background:transparent;border:2px solid var(--t);color:var(--t);box-shadow:none}
         .btn-outline:hover{background:var(--t);color:var(--white)}
         .fade-up{opacity:0;transform:translateY(24px);transition:all .6s cubic-bezier(.4,0,.2,1)}
         .fade-up.visible{opacity:1;transform:translateY(0)}
 
         /* NAV */
-        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 0;background:rgba(255,255,255,.65);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04)}
+        nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 0;background:rgba(255,255,255,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
         nav .wrap{display:flex;justify-content:space-between;align-items:center}
         .logo{font-weight:800;font-size:1.1rem;color:var(--n1);text-decoration:none}.logo span{color:var(--t)}
         .nav-links{display:flex;gap:20px;align-items:center}
@@ -32,161 +32,165 @@
         .nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--t);border-radius:1px}
         nav .btn{padding:8px 20px;font-size:.82rem}
 
+        /* ANIMATED BACKGROUND */
+        .bg-canvas{position:fixed;inset:0;z-index:-1;background:linear-gradient(160deg,#f8fdff 0%,#e8f8fa 40%,#f0fafb 100%);overflow:hidden}
+        .bg-canvas canvas{width:100%;height:100%}
+
         /* HERO */
-        .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
-        .hero-bg{position:fixed;inset:0;z-index:-1}
-        .hero-bg video{width:100%;height:100%;object-fit:cover}
-        .hero-bg::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.3)}
-        .hero-content{position:relative;z-index:1;text-align:center;width:100%;padding:100px 0 40px}
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 0 50px}
+        .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.75) 50%,rgba(255,255,255,.9) 100%);z-index:0}
+        .hero-content{position:relative;z-index:1;text-align:center;width:100%}
         .hero h1{margin-bottom:14px}.hero h1 .accent{color:var(--t)}
-        .hero-sub{font-size:1.05rem;color:var(--n3);max-width:520px;margin:0 auto 28px;line-height:1.7}
+        .hero-sub{font-size:1.05rem;color:var(--n3);max-width:500px;margin:0 auto 28px;line-height:1.7}
         .hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
         .hero-stats{display:flex;justify-content:center;gap:36px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(0,0,0,.06)}
-        .hero-stat{text-align:center}.hero-stat .num{font-size:1.6rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.78rem;color:var(--n4);margin-top:2px}
+        .hero-stat{text-align:center}.hero-stat .num{font-size:1.5rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.78rem;color:var(--n4);margin-top:2px}
+
+        /* GLASS CARD MIXIN */
+        .glass{background:rgba(255,255,255,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.6);border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,.04)}
 
         /* FOR WHOM */
-        .for-whom{background:rgba(255,255,255,.7);backdrop-filter:blur(6px);padding:50px 0}
+        .for-whom{padding:50px 0}
         .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-        .card{background:rgba(255,255,255,.8);border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:24px 18px;text-align:center;transition:all .3s}
-        .card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:var(--tl)}
-        .card-icon{width:44px;height:44px;border-radius:12px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+        .card{background:rgba(255,255,255,.5);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.6);border-radius:18px;padding:24px 16px;text-align:center;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(0,0,0,.03)}
+        .card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,188,212,.1);border-color:var(--tl)}
+        .card-icon{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--tg),rgba(0,188,212,.12));display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
         .card-icon svg{width:22px;height:22px;color:var(--t)}
-        .card h3{margin-bottom:4px;font-size:.95rem}.card p{color:var(--n3);font-size:.82rem;line-height:1.5}
+        .card h3{margin-bottom:4px;font-size:.92rem}.card p{color:var(--n3);font-size:.8rem;line-height:1.5}
 
         /* SHOWCASE */
-        .showcase{background:rgba(240,244,248,.7);backdrop-filter:blur(6px);padding:80px 0}
+        .showcase{padding:80px 0}
         .showcase-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:14px}
-        .showcase-text{max-width:480px}.showcase-text h2{text-align:left;margin-bottom:8px}.showcase-text p{color:var(--n3);font-size:.9rem}
+        .showcase-text{max-width:460px}.showcase-text h2{text-align:left;margin-bottom:8px}.showcase-text p{color:var(--n3);font-size:.88rem}
         .showcase-tags{display:flex;gap:6px;flex-wrap:wrap}
-        .showcase-tag{padding:4px 12px;border-radius:16px;font-size:.75rem;font-weight:600;background:var(--white);color:var(--n2);border:1px solid rgba(0,0,0,.06)}
+        .showcase-tag{padding:4px 12px;border-radius:16px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.6);color:var(--n2);border:1px solid rgba(0,0,0,.05);backdrop-filter:blur(8px)}
         .showcase-scroll{position:relative}
         .showcase-track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 4px;scrollbar-width:none}
         .showcase-track::-webkit-scrollbar{display:none}
-        .showcase-item{flex:0 0 200px;scroll-snap-align:start;border-radius:12px;overflow:hidden;aspect-ratio:9/16;position:relative;cursor:pointer;background:var(--n4)}
+        .showcase-item{flex:0 0 200px;scroll-snap-align:start;border-radius:14px;overflow:hidden;aspect-ratio:9/16;position:relative;cursor:pointer;background:var(--n4);box-shadow:0 4px 16px rgba(0,0,0,.06)}
         .showcase-item img,.showcase-item video{width:100%;height:100%;object-fit:cover;display:block}
-        .video-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:var(--white);font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:6px;display:flex;align-items:center;gap:3px;backdrop-filter:blur(4px)}
+        .video-badge{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.5);color:var(--white);font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:6px;display:flex;align-items:center;gap:3px;backdrop-filter:blur(4px)}
         .video-badge svg{width:10px;height:10px}
-        .showcase-item .play-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.12);opacity:0;transition:opacity .3s}
+        .showcase-item .play-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.1);opacity:0;transition:opacity .3s}
         .showcase-item:hover .play-hint{opacity:1}
-        .play-hint svg{width:40px;height:40px;fill:rgba(255,255,255,.85);filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
-        .scroll-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:var(--white);border:1px solid rgba(0,0,0,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.08);z-index:2;transition:all .2s}
-        .scroll-nav:hover{box-shadow:0 6px 20px rgba(0,0,0,.12);transform:translateY(-50%) scale(1.05)}
+        .play-hint svg{width:36px;height:36px;fill:rgba(255,255,255,.85);filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+        .scroll-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.06);z-index:2;transition:all .2s}
+        .scroll-nav:hover{box-shadow:0 6px 20px rgba(0,0,0,.1);transform:translateY(-50%) scale(1.05)}
         .scroll-nav svg{width:16px;height:16px;color:var(--n1)}
         .scroll-prev{left:-18px}.scroll-next{right:-18px}
 
         /* RESULTS */
-        .results{background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
-        .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-        .result-card{background:rgba(240,244,248,.8);border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:20px;transition:all .3s}
-        .result-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.05);border-color:var(--tl)}
-        .result-card h3{color:var(--t2);margin-bottom:4px;font-size:.95rem}.result-card p{color:var(--n3);font-size:.82rem;line-height:1.5}
+        .results{padding:60px 0}
+        .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+        .result-card{background:rgba(255,255,255,.5);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:20px;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+        .result-card:hover{box-shadow:0 8px 28px rgba(0,188,212,.08);border-color:var(--tl)}
+        .result-card h3{color:var(--t2);margin-bottom:4px;font-size:.92rem}.result-card p{color:var(--n3);font-size:.8rem;line-height:1.5}
 
         /* PROGRAM */
-        .program{background:rgba(240,244,248,.7);backdrop-filter:blur(6px)}
+        .program{padding:70px 0}
         .modules{display:flex;flex-direction:column;gap:10px}
-        .module{background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:20px 24px;display:flex;align-items:center;gap:16px;transition:all .3s}
-        .module:hover{box-shadow:0 6px 20px rgba(0,0,0,.05);border-color:var(--tl)}
-        .module-num{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;flex-shrink:0}
-        .module-content h3{margin-bottom:2px;font-size:.95rem}.module-content p{color:var(--n3);font-size:.85rem}
+        .module{background:rgba(255,255,255,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:14px;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+        .module:hover{box-shadow:0 8px 24px rgba(0,188,212,.08);border-color:var(--tl)}
+        .module-num{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.92rem;flex-shrink:0}
+        .module-content h3{margin-bottom:2px;font-size:.92rem}.module-content p{color:var(--n3);font-size:.82rem}
 
         /* REVIEWS */
-        .reviews{background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+        .reviews{padding:70px 0}
         .reviews-scroll{position:relative}
         .reviews-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 4px;scrollbar-width:none}
         .reviews-track::-webkit-scrollbar{display:none}
-        .review-card{flex:0 0 340px;scroll-snap-align:start;background:rgba(240,244,248,.8);border:1px solid rgba(0,0,0,.04);border-radius:16px;padding:22px}
-        .review-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+        .review-card{flex:0 0 330px;scroll-snap-align:start;background:rgba(255,255,255,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:22px;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+        .review-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
         .review-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tg)}
         .review-avatar img{width:100%;height:100%;object-fit:cover}
-        .review-info h4{font-size:.88rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.72rem;color:var(--n4)}
-        .review-stars{color:var(--t);font-size:.75rem;margin-bottom:8px}
-        .review-text{color:var(--n2);font-size:.82rem;line-height:1.7}
+        .review-info h4{font-size:.85rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.7rem;color:var(--n4)}
+        .review-stars{color:var(--t);font-size:.72rem;margin-bottom:6px}
+        .review-text{color:var(--n2);font-size:.8rem;line-height:1.7}
         .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-        .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer;padding:0;margin-top:6px}
+        .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.75rem;cursor:pointer;padding:0;margin-top:5px}
         .review-toggle:hover{text-decoration:underline}
 
+        /* TIMER */
+        .timer-section{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);text-align:center;padding:24px 0;border-radius:0}
+        .timer-section h3{font-size:1rem;margin-bottom:6px;font-weight:700}
+        .timer-val{font-size:1.8rem;font-weight:800;letter-spacing:.05em}
+
         /* PRICING */
-        .pricing{background:rgba(240,244,248,.7);backdrop-filter:blur(6px)}
+        .pricing{padding:70px 0}
         .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .price-card{background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:28px 22px;text-align:center;transition:all .3s;display:flex;flex-direction:column;position:relative}
-        .price-card.hot{border-color:var(--t);transform:scale(1.02);box-shadow:0 16px 48px rgba(0,188,212,.12)}
-        .price-card.hot::before{content:'Рекомендуем';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);padding:3px 16px;border-radius:16px;font-size:.75rem;font-weight:700}
-        .price-card h3{margin-bottom:8px;font-size:1.05rem}
-        .price-val{font-size:1.7rem;font-weight:800;color:var(--t);margin-bottom:2px}
-        .price-old{text-decoration:line-through;color:var(--n4);font-size:.85rem;margin-bottom:2px}
-        .price-note{color:var(--n4);font-size:.78rem;margin-bottom:14px}
-        .price-list{list-style:none;text-align:left;margin-bottom:18px;flex:1}
-        .price-list li{padding:7px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:.82rem;display:flex;gap:8px;align-items:center}
+        .price-card{background:rgba(255,255,255,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:18px;padding:26px 20px;text-align:center;transition:all .3s;display:flex;flex-direction:column;position:relative;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+        .price-card.hot{border-color:var(--t);transform:scale(1.02);box-shadow:0 16px 48px rgba(0,188,212,.1)}
+        .price-card.hot::before{content:'Рекомендуем';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);padding:3px 16px;border-radius:16px;font-size:.72rem;font-weight:700}
+        .price-card h3{margin-bottom:8px;font-size:1rem}
+        .price-val{font-size:1.6rem;font-weight:800;color:var(--t);margin-bottom:2px}
+        .price-old{text-decoration:line-through;color:var(--n4);font-size:.82rem;margin-bottom:2px}
+        .price-note{color:var(--n4);font-size:.75rem;margin-bottom:12px}
+        .price-list{list-style:none;text-align:left;margin-bottom:16px;flex:1}
+        .price-list li{padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);font-size:.8rem;display:flex;gap:7px;align-items:center}
         .price-list li svg{flex-shrink:0;color:var(--t)}
 
         /* ABOUT */
-        .about{background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
-        .about-inner{display:flex;gap:36px;align-items:center;flex-wrap:wrap}
-        .about-avatar{width:150px;height:150px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--tl),var(--tg));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 32px rgba(0,188,212,.12);overflow:hidden}
+        .about{padding:70px 0}
+        .about-inner{display:flex;gap:32px;align-items:center;flex-wrap:wrap}
+        .about-avatar{width:140px;height:140px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--tl),var(--tg));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 32px rgba(0,188,212,.12);overflow:hidden}
         .about-avatar img{width:100%;height:100%;object-fit:cover}
-        .about-avatar svg{width:56px;height:56px;color:var(--t)}
-        .about-info{flex:1;min-width:260px}.about-info h3{margin-bottom:6px;font-size:1.15rem}.about-info p{color:var(--n3);margin-bottom:6px;font-size:.9rem}
+        .about-avatar svg{width:52px;height:52px;color:var(--t)}
+        .about-info{flex:1;min-width:260px}.about-info h3{margin-bottom:6px;font-size:1.1rem}.about-info p{color:var(--n3);margin-bottom:6px;font-size:.88rem}
 
         /* WHY */
-        .why{background:rgba(240,244,248,.7);backdrop-filter:blur(6px)}
-        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .why-card{padding:22px;background:rgba(255,255,255,.85);border:1px solid rgba(0,0,0,.05);border-radius:16px;transition:all .3s}
-        .why-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.05);border-color:var(--tl)}
-        .why-icon{width:38px;height:38px;border-radius:10px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+        .why{padding:60px 0}
+        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+        .why-card{padding:20px;background:rgba(255,255,255,.5);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:16px;transition:all .3s;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+        .why-card:hover{box-shadow:0 8px 24px rgba(0,188,212,.08);border-color:var(--tl)}
+        .why-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--tg),rgba(0,188,212,.12));display:flex;align-items:center;justify-content:center;margin-bottom:10px}
         .why-icon svg{width:18px;height:18px;color:var(--t)}
-        .why-card h3{margin-bottom:4px;font-size:.95rem}.why-card p{color:var(--n3);font-size:.82rem;line-height:1.5}
+        .why-card h3{margin-bottom:4px;font-size:.92rem}.why-card p{color:var(--n3);font-size:.8rem;line-height:1.5}
 
         /* HOW */
-        .how{background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
-        .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+        .how{padding:60px 0}
+        .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
         .how-step{counter-increment:step;text-align:center}
-        .how-step::before{content:counter(step);display:block;width:40px;height:40px;margin:0 auto 10px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border-radius:11px;font-weight:800;font-size:1rem;line-height:40px}
-        .how-step h3{margin-bottom:4px;font-size:.9rem}.how-step p{color:var(--n3);font-size:.82rem;line-height:1.5}
+        .how-step::before{content:counter(step);display:block;width:38px;height:38px;margin:0 auto 10px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border-radius:10px;font-weight:800;font-size:.95rem;line-height:38px}
+        .how-step h3{margin-bottom:4px;font-size:.88rem}.how-step p{color:var(--n3);font-size:.8rem;line-height:1.5}
 
         /* FAQ */
-        .faq{background:rgba(240,244,248,.7);backdrop-filter:blur(6px)}
-        .faq-list{max-width:680px;margin:0 auto}
+        .faq{padding:60px 0}
+        .faq-list{max-width:660px;margin:0 auto}
         .faq-item{border-bottom:1px solid rgba(0,0,0,.06);padding:14px 0}
-        .faq-q{font-weight:700;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
+        .faq-q{font-weight:700;font-size:.9rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
         .faq-q::after{content:'';width:18px;height:18px;flex-shrink:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2300BCD4' stroke-width='2'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/contain no-repeat;transition:transform .3s}
         .faq-item.open .faq-q::after{transform:rotate(45deg)}
-        .faq-a{display:none;color:var(--n3);margin-top:8px;line-height:1.7;font-size:.88rem}
+        .faq-a{display:none;color:var(--n3);margin-top:8px;line-height:1.7;font-size:.85rem}
         .faq-item.open .faq-a{display:block}
 
-        /* TIMER */
-        .timer-section{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);text-align:center;padding:28px 0}
-        .timer-section h3{font-size:1.1rem;margin-bottom:8px;font-weight:700}
-        .timer-val{font-size:2rem;font-weight:800;letter-spacing:.05em}
-
         /* CTA */
-        .cta{background:rgba(240,244,248,.7);backdrop-filter:blur(6px);text-align:center;padding:60px 0}
-        .cta h2{margin-bottom:10px}.cta p{margin-bottom:24px;font-size:1rem;color:var(--n3);max-width:440px;margin-left:auto;margin-right:auto}
+        .cta{text-align:center;padding:60px 0}
+        .cta h2{margin-bottom:10px}.cta p{margin-bottom:24px;font-size:.95rem;color:var(--n3);max-width:420px;margin-left:auto;margin-right:auto}
 
         /* CONTACT */
-        .contact{background:rgba(255,255,255,.7);backdrop-filter:blur(6px)}
+        .contact{padding:70px 0}
         .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-        .contact-info{display:flex;flex-direction:column;gap:14px}
+        .contact-info{display:flex;flex-direction:column;gap:12px}
         .contact-item{display:flex;gap:10px;align-items:flex-start}
-        .contact-icon{width:36px;height:36px;border-radius:10px;background:var(--tg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .contact-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--tg),rgba(0,188,212,.12));display:flex;align-items:center;justify-content:center;flex-shrink:0}
         .contact-icon svg{width:16px;height:16px;color:var(--t)}
-        .contact-item h4{font-size:.88rem;margin-bottom:1px}.contact-item p{color:var(--n3);font-size:.82rem}
+        .contact-item h4{font-size:.85rem;margin-bottom:1px}.contact-item p{color:var(--n3);font-size:.8rem}
         .contact-item a{color:var(--t);text-decoration:none;font-weight:600}.contact-item a:hover{text-decoration:underline}
         .contact-form{display:flex;flex-direction:column;gap:10px}
-        .contact-form input,.contact-form textarea{font-family:inherit;font-size:.88rem;padding:11px 14px;border:1px solid rgba(0,0,0,.1);border-radius:11px;background:rgba(240,244,248,.8);transition:border-color .2s;resize:none}
+        .contact-form input,.contact-form textarea{font-family:inherit;font-size:.85rem;padding:11px 14px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:rgba(255,255,255,.6);backdrop-filter:blur(8px);transition:border-color .2s;resize:none}
         .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--t)}
 
         /* FOOTER */
-        footer{background:rgba(255,255,255,.8);backdrop-filter:blur(6px);border-top:1px solid rgba(0,0,0,.05);text-align:center;padding:32px 0}
+        footer{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-top:1px solid rgba(0,0,0,.04);text-align:center;padding:30px 0}
         .footer-links{display:flex;justify-content:center;gap:18px;margin-bottom:10px;flex-wrap:wrap}
-        .footer-links a{color:var(--t);text-decoration:none;font-weight:600;font-size:.92rem;transition:color .2s}
+        .footer-links a{color:var(--t);text-decoration:none;font-weight:600;font-size:.9rem;transition:color .2s}
         .footer-links a:hover{color:var(--t2)}
-        footer p{color:var(--n4);font-size:.78rem}
+        footer p{color:var(--n4);font-size:.75rem}
 
         @media(max-width:768px){
             section{padding:50px 0}
             .cards,.results-grid,.why-grid{grid-template-columns:1fr 1fr}
             .how-steps{grid-template-columns:1fr 1fr}
-            .modules{grid-template-columns:1fr}
             .price-grid{grid-template-columns:1fr}
             .price-card.hot{transform:none}
             .contact-grid{grid-template-columns:1fr}
@@ -200,6 +204,9 @@
     </style>
 </head>
 <body>
+
+<!-- ANIMATED BACKGROUND -->
+<div class="bg-canvas"><canvas id="bgCanvas"></canvas></div>
 
 <!-- NAV -->
 <nav>
@@ -219,9 +226,7 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-    <div class="hero-bg">
-        <video autoplay muted loop playsinline preload="auto"><source src="media/herobg.mp4" type="video/mp4"></video>
-    </div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
         <div class="wrap">
             <div class="fade-up">
@@ -247,10 +252,10 @@
     <div class="wrap">
         <h2 class="fade-up">Для кого этот курс</h2>
         <div class="cards">
-            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z"/></svg></div><h3>Мама в декрете</h3><p>Подработка из дома без опыта. Генерируй фото и видео для клиентов, пока дети спят</p></div>
-            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Фрилансер</h3><p>Добавь нейросети в арсенал. Делай за час то, что раньше занимало день. Чек выше, клиентов больше</p></div>
-            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Предприниматель</h3><p>Делай контент для бизнеса сам — баннеры, посты, видео. Экономь на дизайнерах 15К+ в месяц</p></div>
-            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3>Творческий человек</h3><p>Создавай арт, портреты, анимацию. Нейросеть — твой инструмент для самовыражения</p></div>
+            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z"/></svg></div><h3>Мама в декрете</h3><p>Подработка из дома без опыта. Генерируй фото и видео для клиентов</p></div>
+            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Фрилансер</h3><p>Добавь нейросети в арсенал. Чек выше, клиентов больше</p></div>
+            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Предприниматель</h3><p>Контент для бизнеса сам. Экономь на дизайнерах 15К+ в месяц</p></div>
+            <div class="card fade-up"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3>Творческий</h3><p>Арт, портреты, анимация. Нейросеть — инструмент самовыражения</p></div>
         </div>
     </div>
 </section>
@@ -262,7 +267,7 @@
             <div class="showcase-text">
                 <span class="section-label">Работы учеников</span>
                 <h2>Что создают наши ученики</h2>
-                <p>Наведи на видео, чтобы посмотреть. Нажми — включится звук.</p>
+                <p>Наведи на видео чтобы посмотреть. Нажми — включится звук.</p>
             </div>
             <div class="showcase-tags">
                 <span class="showcase-tag">Фото</span><span class="showcase-tag">Видео</span><span class="showcase-tag">Арт</span><span class="showcase-tag">Логотипы</span>
@@ -295,10 +300,10 @@
     <div class="wrap">
         <h2 class="fade-up">Что ты получишь после курса</h2>
         <div class="results-grid">
-            <div class="result-card fade-up"><h3>Портфолио</h3><p>20+ готовых работ: фото, видео, арт, логотипы для показа клиентам</p></div>
-            <div class="result-card fade-up"><h3>Навыки</h3><p>Сможешь зарабатывать на нейросетях — фриланс, подработка или бизнес</p></div>
-            <div class="result-card fade-up"><h3>Сообщество</h3><p>Закрытая группа с промптами, обучением и поддержкой единомышленников</p></div>
-            <div class="result-card fade-up"><h3>Экономия</h3><p>Делай за 10 минут то, что раньше занимало часы и стоило тысячи</p></div>
+            <div class="result-card fade-up"><h3>Портфолио</h3><p>20+ готовых работ для показа клиентам</p></div>
+            <div class="result-card fade-up"><h3>Навыки</h3><p>Заработок на нейросетях — фриланс или бизнес</p></div>
+            <div class="result-card fade-up"><h3>Сообщество</h3><p>Закрытая группа с промптами и поддержкой</p></div>
+            <div class="result-card fade-up"><h3>Экономия</h3><p>Делай за 10 минут то что раньше часы</p></div>
         </div>
     </div>
 </section>
@@ -308,12 +313,12 @@
     <div class="wrap">
         <h2 class="fade-up">Программа курса</h2>
         <div class="modules">
-            <div class="module fade-up"><div class="module-num">1</div><div class="module-content"><h3>Основы нейросетей</h3><p>Как работают ИИ, какие инструменты есть, как начать с нуля. Настройка рабочего пространства, первые генерации.</p></div></div>
-            <div class="module fade-up"><div class="module-num">2</div><div class="module-content"><h3>Генерация изображений</h3><p>Фото, арт, логотипы, обработка. Промпты, референсы, стили. Работа с Midjourney, DALL-E, Stable Diffusion.</p></div></div>
-            <div class="module fade-up"><div class="module-num">3</div><div class="module-content"><h3>Видео и анимация</h3><p>Генерация видео через Kling и Seedance. Анимация фото, монтаж с ИИ, создание Reels и TikTok.</p></div></div>
-            <div class="module fade-up"><div class="module-num">4</div><div class="module-content"><h3>Тексты и контент</h3><p>Посты, статьи, сценарии, продающие тексты. ChatGPT, Claude. Автоматизация контента.</p></div></div>
-            <div class="module fade-up"><div class="module-num">5</div><div class="module-content"><h3>Бизнес и заработок</h3><p>Как найти клиентов, выстроить воронку продаж, монетизировать навыки. Фриланс и свой бизнес.</p></div></div>
-            <div class="module fade-up"><div class="module-num">6</div><div class="module-content"><h3>Продвинутые техники</h3><p>Боты, автоматизация, интеграции. Telegram-боты, автопостинг, масштабирование.</p></div></div>
+            <div class="module fade-up"><div class="module-num">1</div><div class="module-content"><h3>Основы нейросетей</h3><p>Как работают ИИ, инструменты, начало с нуля. Настройка рабочего пространства.</p></div></div>
+            <div class="module fade-up"><div class="module-num">2</div><div class="module-content"><h3>Генерация изображений</h3><p>Фото, арт, логотипы. Промпты, референсы, стили. Midjourney, DALL-E, Stable Diffusion.</p></div></div>
+            <div class="module fade-up"><div class="module-num">3</div><div class="module-content"><h3>Видео и анимация</h3><p>Kling, Seedance. Анимация фото, монтаж с ИИ, Reels и TikTok.</p></div></div>
+            <div class="module fade-up"><div class="module-num">4</div><div class="module-content"><h3>Тексты и контент</h3><p>Посты, статьи, сценарии. ChatGPT, Claude. Автоматизация контента.</p></div></div>
+            <div class="module fade-up"><div class="module-num">5</div><div class="module-content"><h3>Бизнес и заработок</h3><p>Клиенты, воронка, монетизация. Фриланс и свой бизнес.</p></div></div>
+            <div class="module fade-up"><div class="module-num">6</div><div class="module-content"><h3>Продвинутые техники</h3><p>Боты, автоматизация, интеграции. Telegram-боты, автопостинг.</p></div></div>
         </div>
     </div>
 </section>
@@ -325,41 +330,13 @@
         <div class="reviews-scroll fade-up">
             <button class="scroll-nav scroll-prev" onclick="scrollTrack('reviewsTrack',-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
             <div class="reviews-track" id="reviewsTrack">
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Александра.jpg" alt="Александра"></div><div class="review-info"><h4>Александра ★★★★★</h4><span>Ученица курса</span></div></div>
-                    <div class="review-text collapsed" id="rt1">Занятия нейрографикой с Екатериной стали настоящим открытием! Её умение создавать атмосферу доверия и комфорта позволяет раскрыть творческий потенциал даже начинающим ученикам. Екатерина доступно объясняет основы, делится секретами мастерства и вдохновляет на создание уникальных работ. Благодаря её поддержке я научилась выражать эмоции и мысли через рисунок, почувствовала гармонию и внутреннюю свободу. Рекомендую записаться на курс всем, кто хочет погрузиться в мир нейрографики!</div>
-                    <button class="review-toggle" onclick="toggleReview('rt1',this)">Читать полностью</button>
-                </div>
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Мальгина Надежда.jpg" alt="Надежда"></div><div class="review-info"><h4>Надежда ★★★★★</h4><span>Ученица курса</span></div></div>
-                    <div class="review-text collapsed" id="rt2">Как человек далёкий от компьютеров, просматривая видео и фото Екатерины, приходила в дикий восторг. Стала вынашивать мысль пройти обучение. Записалась на курс и не пожалела — в шоке от того как это работает! Заразила мужа этими видео и фото. Огромная благодарность Кате за подробный урок. Советую всем пройти этот курс!</div>
-                    <button class="review-toggle" onclick="toggleReview('rt2',this)">Читать полностью</button>
-                </div>
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Ирина.jpg" alt="Ирина"></div><div class="review-info"><h4>Ирина ★★★★★</h4><span>Мама 4 детей</span></div></div>
-                    <div class="review-text collapsed" id="rt3">Это просто невероятно! Спасибо огромное за такое крутое погружение в нейронку. Я перестала спать потому что процесс затягивает так что оторваться невозможно. Нейронка благодаря тебе стала для меня 6-й любовью — у меня 4-ро детей и их я конечно люблю больше, но это что-то за гранью. Спасибо за внимание, за терпение, за то что отвечала на все вопросы!</div>
-                    <button class="review-toggle" onclick="toggleReview('rt3',this)">Читать полностью</button>
-                </div>
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Валерия.jpg" alt="Валерия"></div><div class="review-info"><h4>Валерия ★★★★★</h4><span>Ученица курса</span></div></div>
-                    <div class="review-text collapsed" id="rt4">На работе стресс, не ловила вайб, жизнь не в кайф. В какой-то день поняла: хватит так жить, нужно в себя вложить. Открыла нейро — новый мир, новый свет. Этот курс — реальный, по делу. Катя с нами на связи 24/7. Теперь в работе и в жизни — мой собственный мир.</div>
-                    <button class="review-toggle" onclick="toggleReview('rt4',this)">Читать полностью</button>
-                </div>
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Светлана Ускова.jpg" alt="Светлана"></div><div class="review-info"><h4>Светлана ★★★★★</h4><span>Ученица курса</span></div></div>
-                    <div class="review-text collapsed" id="rt5">Одно из лучших обучений которые у меня были. Материал подаётся просто и понятно без воды. Нейросети стали частью повседневной жизни — использую в работе, дома, для задач с детьми. Катя всегда на связи, отвечает на вопросы, невероятно мотивирует. Искренне рекомендую!</div>
-                    <button class="review-toggle" onclick="toggleReview('rt5',this)">Читать полностью</button>
-                </div>
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Наталья.jpg" alt="Наталья"></div><div class="review-info"><h4>Наталья ★★★★★</h4><span>Ученица курса</span></div></div>
-                    <div class="review-text collapsed" id="rt6">Курс понятный и хорошо структурированный. Много практики — задания помогли закрепить теорию. Получила хорошую базу и понимание куда двигаться дальше. Рекомендую тем кто хочет получить практический опыт!</div>
-                    <button class="review-toggle" onclick="toggleReview('rt6',this)">Читать полностью</button>
-                </div>
-                <div class="review-card">
-                    <div class="review-top"><div class="review-avatar"><img src="reviews/Татьяна.jpg" alt="Татьяна"></div><div class="review-info"><h4>Татьяна ★★★★★</h4><span>Ученица курса</span></div></div>
-                    <div class="review-text collapsed" id="rt7">Объясняет простыми словами и по делу. Всё разложено по шагам: сначала база, потом практика. Было много примеров — стало понятнее как применять нейросети в реальных задачах. Отдельный плюс — поддержка и обратная связь. Курс рекомендую!</div>
-                    <button class="review-toggle" onclick="toggleReview('rt7',this)">Читать полностью</button>
-                </div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Александра.jpg" alt="А"></div><div class="review-info"><h4>Александра ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt1">Занятия стали настоящим открытием! Екатерина доступно объясняет основы, делится секретами мастерства и вдохновляет на создание уникальных работ. Рекомендую всем!</div><button class="review-toggle" onclick="toggleReview('rt1',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Мальгина Надежда.jpg" alt="Н"></div><div class="review-info"><h4>Надежда ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt2">Записалась на курс и не пожалела! Заразила мужа. В шоке от того как это работает. Советую всем!</div><button class="review-toggle" onclick="toggleReview('rt2',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Ирина.jpg" alt="И"></div><div class="review-info"><h4>Ирина ★★★★★</h4><span>Мама 4 детей</span></div></div><div class="review-text collapsed" id="rt3">Нейронка стала 6-й любовью! У меня 4-ро детей но это за гранью. Спасибо за терпение и внимание!</div><button class="review-toggle" onclick="toggleReview('rt3',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Валерия.jpg" alt="В"></div><div class="review-info"><h4>Валерия ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt4">Стресс ушёл, появился мой стиль. Катя на связи 24/7. Теперь в жизни — мой собственный мир.</div><button class="review-toggle" onclick="toggleReview('rt4',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Светлана Ускова.jpg" alt="С"></div><div class="review-info"><h4>Светлана ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt5">Одно из лучших обучений. Нейросети стали частью жизни. Катя мотивирует двигаться дальше!</div><button class="review-toggle" onclick="toggleReview('rt5',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Наталья.jpg" alt="Н"></div><div class="review-info"><h4>Наталья ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt6">Курс понятный и структурированный. Много практики. Получила базу и понимание куда двигаться.</div><button class="review-toggle" onclick="toggleReview('rt6',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Татьяна.jpg" alt="Т"></div><div class="review-info"><h4>Татьяна ★★★★★</h4><span>Ученица курса</span></div></div><div class="review-text collapsed" id="rt7">Объясняет простыми словами. Всё по шагам. Отдельный плюс — поддержка и обратная связь!</div><button class="review-toggle" onclick="toggleReview('rt7',this)">Читать полностью</button></div>
             </div>
             <button class="scroll-nav scroll-next" onclick="scrollTrack('reviewsTrack',1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
@@ -383,10 +360,10 @@
                 <div class="price-val">1 990 ₽</div>
                 <div class="price-note">Мини-курс</div>
                 <ul class="price-list">
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>5 видеоуроков</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Пошаговые инструкции</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>50 промптов</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Доступ в группу</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>5 видеоуроков</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Пошаговые инструкции</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>50 промптов</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Доступ в группу</li>
                 </ul>
                 <a href="#" class="btn btn-outline" style="width:100%;justify-content:center">Купить</a>
             </div>
@@ -396,11 +373,10 @@
                 <div class="price-val">12 990 ₽</div>
                 <div class="price-note">Полный курс</div>
                 <ul class="price-list">
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>60+ навыков с нейросетями</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>10 недель, 5 модулей</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытая группа учеников</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Эксклюзивные промпты</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Бессрочный доступ</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>60+ навыков</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>10 недель, 5 модулей</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытая группа</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Бессрочный доступ</li>
                 </ul>
                 <a href="#" class="btn" style="width:100%;justify-content:center">Записаться</a>
             </div>
@@ -410,12 +386,11 @@
                 <div class="price-val">19 990 ₽</div>
                 <div class="price-note">Полный пакет</div>
                 <ul class="price-list">
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Всё из 1 ступени</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Продвинутые техники генерации</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>TikTok, Reels, монтаж видео</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Автоматизация и боты</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Доступ в закрытую 2 ступень</li>
-                    <li><svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Дополнительные модули</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Всё из 1 ступени</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Продвинутые техники</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>TikTok, Reels, монтаж</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Автоматизация и боты</li>
+                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытая 2 ступень</li>
                 </ul>
                 <a href="#" class="btn" style="width:100%;justify-content:center">Купить пакет</a>
             </div>
@@ -431,9 +406,9 @@
             <div class="about-avatar"><img src="media/ekaterina.jpg" alt="Екатерина Цветкова" onerror="this.style.display='none';this.parentElement.innerHTML='<svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;1.2&quot;><path d=&quot;M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z&quot;/></svg>'"></div>
             <div class="about-info">
                 <h3>Екатерина Цветкова</h3>
-                <p>Эксперт по нейросетям с многолетним опытом. Обучаю работе с ИИ — от генерации фото и видео до создания текстов и автоматизации бизнес-процессов.</p>
-                <p>Веду канал с промптами и обучающую группу. Помогаю ученикам освоить нейросети и начать зарабатывать на своих навыках.</p>
-                <p>Мой подход — максимум практики с первого урока. Каждый ученик создаёт реальные работы, которые можно показать клиентам.</p>
+                <p>Эксперт по нейросетям с многолетним опытом. Обучаю работе с ИИ — от генерации фото и видео до создания текстов и автоматизации.</p>
+                <p>Веду канал с промптами и обучающую группу. Помогаю ученикам освоить нейросети и начать зарабатывать.</p>
+                <p>Мой подход — максимум практики с первого урока. Каждый ученик создаёт реальные работы.</p>
             </div>
         </div>
     </div>
@@ -444,9 +419,9 @@
     <div class="wrap">
         <h2 class="fade-up">Почему выбирают нас</h2>
         <div class="why-grid">
-            <div class="why-card fade-up"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Живое сообщество</h3><p>Ученики помогают друг другу, делятся результатами и вдохновляют. Вы не одни в этом пути</p></div>
-            <div class="why-card fade-up"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Практика с первого дня</h3><p>Никакой сухой теории. Каждый урок — это реальный результат: фото, видео или текст</p></div>
-            <div class="why-card fade-up"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Актуальные инструменты</h3><p>Работаем с самыми современными нейросетями и инструментами, которые реально используются на рынке прямо сейчас</p></div>
+            <div class="why-card fade-up"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Живое сообщество</h3><p>Ученики помогают друг другу, делятся результатами и вдохновляют</p></div>
+            <div class="why-card fade-up"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Практика с первого дня</h3><p>Каждый урок — реальный результат фото видео или текст</p></div>
+            <div class="why-card fade-up"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Актуальные инструменты</h3><p>Работаем с самыми современными нейросетями которые реально используются на рынке</p></div>
         </div>
     </div>
 </section>
@@ -456,10 +431,10 @@
     <div class="wrap">
         <h2 class="fade-up">Как проходит обучение</h2>
         <div class="how-steps">
-            <div class="how-step fade-up"><h3>Выбираешь тариф</h3><p>Мини-курс для старта или полный курс</p></div>
-            <div class="how-step fade-up"><h3>Смотришь уроки</h3><p>Видео + инструкции + промпты</p></div>
+            <div class="how-step fade-up"><h3>Выбираешь тариф</h3><p>Мини-курс или полный</p></div>
+            <div class="how-step fade-up"><h3>Смотришь уроки</h3><p>Видео + инструкции</p></div>
             <div class="how-step fade-up"><h3>Делаешь практику</h3><p>Фото, видео, тексты</p></div>
-            <div class="how-step fade-up"><h3>Получаешь результат</h3><p>Портфолио + навыки + заработок</p></div>
+            <div class="how-step fade-up"><h3>Получаешь результат</h3><p>Портфолио + навыки</p></div>
         </div>
     </div>
 </section>
@@ -469,11 +444,11 @@
     <div class="wrap">
         <h2 class="fade-up">Частые вопросы</h2>
         <div class="faq-list fade-up">
-            <div class="faq-item"><div class="faq-q">Нужен ли опыт?</div><div class="faq-a">Нет, курс подходит для новичков. Начинаем с самых основ и пошагово доходим до продвинутых техник.</div></div>
-            <div class="faq-item"><div class="faq-q">Сколько длится доступ?</div><div class="faq-a">Бессрочно. Доступ ко всем материалам навсегда, включая обновления.</div></div>
-            <div class="faq-item"><div class="faq-q">Есть ли рассрочка?</div><div class="faq-a">Да, рассрочка через Prodamus. Без переплат.</div></div>
-            <div class="faq-item"><div class="faq-q">Есть ли обратная связь?</div><div class="faq-a">Да, закрытая группа для учеников. Екатерина отвечает на вопросы и помогает.</div></div>
-            <div class="faq-item"><div class="faq-q">Можно попробовать бесплатно?</div><div class="faq-a">Да! Попробуйте бота Nano Banana — 3 бесплатных генерации. Плюс бесплатные промпты в канале @prompt_tyt.</div></div>
+            <div class="faq-item"><div class="faq-q">Нужен ли опыт?</div><div class="faq-a">Нет, курс для новичков. Начинаем с основ.</div></div>
+            <div class="faq-item"><div class="faq-q">Сколько длится доступ?</div><div class="faq-a">Бессрочно, включая обновления.</div></div>
+            <div class="faq-item"><div class="faq-q">Есть ли рассрочка?</div><div class="faq-a">Да, через Prodamus. Без переплат.</div></div>
+            <div class="faq-item"><div class="faq-q">Есть ли обратная связь?</div><div class="faq-a">Да, закрытая группа. Екатерина отвечает на вопросы.</div></div>
+            <div class="faq-item"><div class="faq-q">Можно попробовать бесплатно?</div><div class="faq-a">Да! Бот Nano Banana — 3 бесплатных генерации.</div></div>
         </div>
     </div>
 </section>
@@ -491,7 +466,7 @@
 <section class="contact" id="contact">
     <div class="wrap">
         <h2 class="fade-up">Свяжитесь с нами</h2>
-        <p class="fade-up" style="text-align:center;color:var(--n3);max-width:440px;margin:-28px auto 28px;font-size:.9rem">Есть вопросы? Заполните форму — ответим в течение часа</p>
+        <p class="fade-up" style="text-align:center;color:var(--n3);max-width:420px;margin:-24px auto 24px;font-size:.88rem">Есть вопросы? Заполните форму — ответим в течение часа</p>
         <div class="contact-grid fade-up">
             <div class="contact-info">
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><h4>Telegram</h4><p><a href="https://t.me/TsvetkovaKaterina">@TsvetkovaKaterina</a></p></div></div>
@@ -503,7 +478,7 @@
                 <input type="text" placeholder="Telegram или Email" required id="contactContact">
                 <textarea placeholder="Что вас интересует?" rows="4" id="contactMsg"></textarea>
                 <button type="submit" class="btn" style="width:100%;justify-content:center">Отправить</button>
-                <p style="color:var(--n4);font-size:.72rem;text-align:center">Сообщение отправится в Telegram</p>
+                <p style="color:var(--n4);font-size:.7rem;text-align:center">Сообщение отправится в Telegram</p>
             </form>
         </div>
     </div>
@@ -522,6 +497,57 @@
 </footer>
 
 <script>
+// ANIMATED BACKGROUND - flowing smoky lines
+const canvas=document.getElementById('bgCanvas');
+const ctx=canvas.getContext('2d');
+let W,H;
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight*3}
+resize();window.addEventListener('resize',resize);
+
+class FlowLine{
+    constructor(){this.reset()}
+    reset(){
+        this.x=Math.random()*W;
+        this.y=Math.random()*H;
+        this.vx=(Math.random()-.5)*.3;
+        this.vy=(Math.random()-.5)*.2;
+        this.len=200+Math.random()*400;
+        this.width=1+Math.random()*2;
+        this.opacity=.03+Math.random()*.06;
+        this.hue=175+Math.random()*20;
+    }
+    update(){
+        this.x+=this.vx;
+        this.y+=this.vy;
+        if(this.x<-this.len||this.x>W+this.len||this.y<-50||this.y>H+50)this.reset();
+    }
+    draw(){
+        ctx.beginPath();
+        ctx.moveTo(this.x,this.y);
+        for(let i=1;i<20;i++){
+            const t=i/20;
+            ctx.lineTo(this.x+this.vx*this.len*t+Math.sin(t*6+Date.now()*.0003)*30,this.y+this.vy*this.len*t+Math.cos(t*4+Date.now()*.0002)*20);
+        }
+        ctx.strokeStyle=`hsla(${this.hue},60%,55%,${this.opacity})`;
+        ctx.lineWidth=this.width;
+        ctx.lineCap='round';
+        ctx.stroke();
+    }
+}
+
+const lines=[];for(let i=0;i<40;i++)lines.push(new FlowLine());
+
+function animate(){
+    ctx.clearRect(0,0,W,H);
+    const scrollY=window.pageYOffset||0;
+    ctx.save();
+    ctx.translate(0,-scrollY*.3);
+    lines.forEach(l=>{l.update();l.draw()});
+    ctx.restore();
+    requestAnimationFrame(animate);
+}
+animate();
+
 // SCROLL ANIMATIONS
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
@@ -539,52 +565,31 @@ window.addEventListener('scroll',()=>{
 function scrollTrack(id,dir){
     const track=document.getElementById(id);
     const items=track.children;
-    if(dir>0){
-        track.appendChild(items[0].cloneNode(true));
-        track.removeChild(items[0]);
-    } else {
-        const last=items[items.length-1];
-        track.insertBefore(last.cloneNode(true),items[0]);
-        track.removeChild(last);
-    }
+    if(dir>0){track.appendChild(items[0].cloneNode(true));track.removeChild(items[0])}
+    else{const last=items[items.length-1];track.insertBefore(last.cloneNode(true),items[0]);track.removeChild(last)}
     track.scrollBy({left:dir*220,behavior:'smooth'});
 }
 
-// SHOWCASE VIDEO: hover=play muted, click=toggle sound
+// SHOWCASE VIDEO
 document.querySelectorAll('.showcase-item[data-video]').forEach(item=>{
     const video=item.querySelector('video');
     item.addEventListener('mouseenter',()=>{video.muted=true;video.play()});
     item.addEventListener('mouseleave',()=>{video.pause();video.currentTime=0});
-    item.addEventListener('click',()=>{
-        if(video.paused){video.muted=false;video.play()}
-        else{video.muted=!video.muted}
-    });
+    item.addEventListener('click',()=>{if(video.paused){video.muted=false;video.play()}else{video.muted=!video.muted}});
 });
 
-// GLOBAL TIMER
+// TIMER
 let gh=47,gm=59,gs=59;
-setInterval(()=>{gs--;if(gs<0){gs=59;gm--}if(gm<0){gm=59;gh--}if(gh<0)gh=0;
-const gt=document.getElementById('globalTimer');
-if(gt)gt.textContent=`${gh}:${String(gm).padStart(2,'0')}:${String(gs).padStart(2,'0')}`},1000);
+setInterval(()=>{gs--;if(gs<0){gs=59;gm--}if(gm<0){gm=59;gh--}if(gh<0)gh=0;const gt=document.getElementById('globalTimer');if(gt)gt.textContent=`${gh}:${String(gm).padStart(2,'0')}:${String(gs).padStart(2,'0')}`},1000);
 
 // FAQ
 document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',function(){this.closest('.faq-item').classList.toggle('open')}));
 
-// EXPANDABLE REVIEWS
-function toggleReview(id,btn){
-    const el=document.getElementById(id);
-    el.classList.toggle('collapsed');
-    btn.textContent=el.classList.contains('collapsed')?'Читать полностью':'Свернуть';
-}
+// REVIEWS
+function toggleReview(id,btn){const el=document.getElementById(id);el.classList.toggle('collapsed');btn.textContent=el.classList.contains('collapsed')?'Читать полностью':'Свернуть'}
 
-// CONTACT FORM
-function sendToTelegram(e){
-    e.preventDefault();
-    const name=document.getElementById('contactName').value;
-    const contact=document.getElementById('contactContact').value;
-    const msg=document.getElementById('contactMsg').value;
-    window.open(`https://t.me/TsvetkovaKaterina?text=${encodeURIComponent('📝 Заявка с сайта\n\n👤 '+name+'\n📱 '+contact+'\n💬 '+msg)}`,'_blank');
-}
+// CONTACT
+function sendToTelegram(e){e.preventDefault();const n=document.getElementById('contactName').value,c=document.getElementById('contactContact').value,m=document.getElementById('contactMsg').value;window.open(`https://t.me/TsvetkovaKaterina?text=${encodeURIComponent('📝 Заявка\n\n👤 '+n+'\n📱 '+c+'\n💬 '+m)}`,'_blank')}
 </script>
 
 </body>
