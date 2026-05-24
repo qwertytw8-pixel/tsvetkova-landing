@@ -33,8 +33,11 @@
         nav .btn{padding:8px 20px;font-size:.82rem}
 
         /* ANIMATED BACKGROUND */
-        .bg-canvas{position:fixed;inset:0;z-index:-1;background:linear-gradient(160deg,#f8fdff 0%,#e8f8fa 40%,#f0fafb 100%);overflow:hidden}
-        .bg-canvas canvas{width:100%;height:100%}
+        .bg-canvas{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;background:linear-gradient(160deg,#f8fdff 0%,#e8f8fa 40%,#f0fafb 100%);overflow:hidden}
+        .bg-canvas canvas{position:absolute;top:0;left:0;width:100%;height:100%}
+
+        /* DIVIDERS */
+        .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,188,212,.15),transparent);margin:0 auto;max-width:800px}
 
         /* HERO */
         .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:100px 0 50px}
@@ -99,21 +102,21 @@
         .reviews-scroll{position:relative}
         .reviews-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 4px;scrollbar-width:none}
         .reviews-track::-webkit-scrollbar{display:none}
-        .review-card{flex:0 0 330px;scroll-snap-align:start;background:rgba(255,255,255,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:16px;padding:22px;box-shadow:0 4px 16px rgba(0,0,0,.03)}
-        .review-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-        .review-avatar{width:40px;height:40px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tg)}
+        .review-card{flex:0 0 360px;scroll-snap-align:start;background:rgba(255,255,255,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);border-radius:18px;padding:26px;box-shadow:0 4px 16px rgba(0,0,0,.03)}
+        .review-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+        .review-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tg)}
         .review-avatar img{width:100%;height:100%;object-fit:cover}
-        .review-info h4{font-size:.85rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.7rem;color:var(--n4)}
-        .review-stars{color:var(--t);font-size:.72rem;margin-bottom:6px}
-        .review-text{color:var(--n2);font-size:.8rem;line-height:1.7}
+        .review-info h4{font-size:.9rem;font-weight:700;margin-bottom:2px}.review-info span{font-size:.75rem;color:var(--n4)}
+        .review-stars{color:var(--t);font-size:.78rem;margin-bottom:8px}
+        .review-text{color:var(--n2);font-size:.85rem;line-height:1.7}
         .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
         .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.75rem;cursor:pointer;padding:0;margin-top:5px}
         .review-toggle:hover{text-decoration:underline}
 
         /* TIMER */
-        .timer-section{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);text-align:center;padding:24px 0;border-radius:0}
-        .timer-section h3{font-size:1rem;margin-bottom:6px;font-weight:700}
-        .timer-val{font-size:1.8rem;font-weight:800;letter-spacing:.05em}
+        .timer-section{text-align:center;padding:20px 0}
+        .timer-section h3{font-size:.95rem;margin-bottom:6px;font-weight:700;color:var(--n2)}
+        .timer-val{font-size:1.6rem;font-weight:800;letter-spacing:.05em;color:#ef4444}
 
         /* PRICING */
         .pricing{padding:70px 0}
@@ -260,6 +263,8 @@
     </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- SHOWCASE -->
 <section class="showcase" id="showcase">
     <div class="wrap">
@@ -295,6 +300,8 @@
     </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- RESULTS -->
 <section class="results">
     <div class="wrap">
@@ -307,6 +314,8 @@
         </div>
     </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- PROGRAM -->
 <section class="program" id="program">
@@ -322,6 +331,8 @@
         </div>
     </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- REVIEWS -->
 <section class="reviews" id="reviews">
@@ -343,11 +354,7 @@
     </div>
 </section>
 
-<!-- TIMER -->
-<section class="timer-section">
-    <h3>Поторопись — скидка действует ограниченное время!</h3>
-    <div class="timer-val" id="globalTimer">47:59:59</div>
-</section>
+<div class="divider"></div>
 
 <!-- PRICING -->
 <section class="pricing" id="pricing">
@@ -398,6 +405,14 @@
     </div>
 </section>
 
+<!-- TIMER -->
+<div class="timer-section">
+    <h3>Поторопись — скидка действует ограниченное время!</h3>
+    <div class="timer-val" id="globalTimer">47:59:59</div>
+</div>
+
+<div class="divider"></div>
+
 <!-- ABOUT -->
 <section class="about" id="about">
     <div class="wrap">
@@ -414,6 +429,8 @@
     </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- WHY -->
 <section class="why">
     <div class="wrap">
@@ -425,6 +442,8 @@
         </div>
     </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- HOW -->
 <section class="how">
@@ -438,6 +457,8 @@
         </div>
     </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
@@ -453,6 +474,8 @@
     </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- CTA -->
 <section class="cta">
     <div class="wrap">
@@ -461,6 +484,8 @@
         <a href="quiz.html" class="btn fade-up">Пройти тест</a>
     </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
@@ -501,20 +526,22 @@
 const canvas=document.getElementById('bgCanvas');
 const ctx=canvas.getContext('2d');
 let W,H;
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight*3}
-resize();window.addEventListener('resize',resize);
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();
+window.addEventListener('resize',resize);
 
 class FlowLine{
     constructor(){this.reset()}
     reset(){
         this.x=Math.random()*W;
         this.y=Math.random()*H;
-        this.vx=(Math.random()-.5)*.3;
-        this.vy=(Math.random()-.5)*.2;
-        this.len=200+Math.random()*400;
-        this.width=1+Math.random()*2;
-        this.opacity=.03+Math.random()*.06;
+        this.vx=(Math.random()-.5)*.4;
+        this.vy=(Math.random()-.5)*.3;
+        this.len=150+Math.random()*300;
+        this.width=1+Math.random()*2.5;
+        this.opacity=.04+Math.random()*.08;
         this.hue=175+Math.random()*20;
+        this.phase=Math.random()*Math.PI*2;
     }
     update(){
         this.x+=this.vx;
@@ -524,26 +551,25 @@ class FlowLine{
     draw(){
         ctx.beginPath();
         ctx.moveTo(this.x,this.y);
-        for(let i=1;i<20;i++){
+        for(let i=1;i<=20;i++){
             const t=i/20;
-            ctx.lineTo(this.x+this.vx*this.len*t+Math.sin(t*6+Date.now()*.0003)*30,this.y+this.vy*this.len*t+Math.cos(t*4+Date.now()*.0002)*20);
+            const sx=Math.sin(t*5+this.phase+Date.now()*.0002)*25;
+            const sy=Math.cos(t*3+this.phase+Date.now()*.00015)*18;
+            ctx.lineTo(this.x+this.vx*this.len*t+sx,this.y+this.vy*this.len*t+sy);
         }
-        ctx.strokeStyle=`hsla(${this.hue},60%,55%,${this.opacity})`;
+        ctx.strokeStyle=`hsla(${this.hue},55%,55%,${this.opacity})`;
         ctx.lineWidth=this.width;
         ctx.lineCap='round';
         ctx.stroke();
     }
 }
 
-const lines=[];for(let i=0;i<40;i++)lines.push(new FlowLine());
+const lines=[];
+for(let i=0;i<50;i++)lines.push(new FlowLine());
 
 function animate(){
     ctx.clearRect(0,0,W,H);
-    const scrollY=window.pageYOffset||0;
-    ctx.save();
-    ctx.translate(0,-scrollY*.3);
     lines.forEach(l=>{l.update();l.draw()});
-    ctx.restore();
     requestAnimationFrame(animate);
 }
 animate();
