@@ -7,17 +7,15 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap');
         *{margin:0;padding:0;box-sizing:border-box}
-        :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f5f7fa;--n6:#eef2f7}
+        :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f5f7fa}
         html{scroll-behavior:smooth}
         body{font-family:'Manrope',sans-serif;color:var(--n1);line-height:1.7;background:var(--n5);overflow-x:hidden}
-        .wrap{max-width:1060px;margin:0 auto;padding:0 24px}
-        section{padding:80px 0}
-        h1{font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:800;line-height:1.1;letter-spacing:-.03em}
-        h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:700;text-align:center;margin-bottom:40px;letter-spacing:-.015em}
-        .section-label{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:var(--t);margin-bottom:10px}
+        .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+        section{padding:60px 0}
+        h1{font-size:clamp(2.4rem,6vw,3.6rem);font-weight:800;line-height:1.1;letter-spacing:-.03em}
+        h2{font-size:clamp(1.3rem,2.8vw,1.8rem);font-weight:700;text-align:center;margin-bottom:28px}
         .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border:none;border-radius:50px;font-family:inherit;font-size:.95rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .2s cubic-bezier(.16,1,.3,1);box-shadow:0 4px 20px rgba(0,188,212,.2)}
         .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,188,212,.3)}
-        .btn:active{transform:translateY(0) scale(.98)}
         .btn-outline{background:transparent;border:2px solid var(--t);color:var(--t);box-shadow:none}
         .btn-outline:hover{background:var(--t);color:var(--white)}
         .btn-lg{padding:18px 44px;font-size:1.05rem}
@@ -31,7 +29,6 @@
         .mesh-blob.b1{width:800px;height:800px;background:radial-gradient(circle,rgba(0,188,212,.45),transparent 60%);top:-25%;left:-15%;animation-delay:0s}
         .mesh-blob.b2{width:700px;height:700px;background:radial-gradient(circle,rgba(38,198,218,.38),transparent 60%);bottom:-20%;right:-12%;animation-delay:-6s}
         .mesh-blob.b3{width:550px;height:550px;background:radial-gradient(circle,rgba(0,151,167,.3),transparent 60%);top:30%;left:40%;animation-delay:-12s}
-        .mesh-blob.b4{width:500px;height:500px;background:radial-gradient(circle,rgba(178,235,242,.4),transparent 60%);top:55%;left:5%;animation-delay:-3s}
         @keyframes meshFloat{0%{transform:translate(0,0) scale(1)}25%{transform:translate(50px,-40px) scale(1.08)}50%{transform:translate(-30px,60px) scale(.95)}75%{transform:translate(40px,20px) scale(1.05)}100%{transform:translate(-20px,-30px) scale(1)}}
 
         /* NAV */
@@ -52,7 +49,6 @@
         .mobile-menu.open{display:flex}
         .mobile-menu a{font-size:1.2rem;font-weight:600;color:var(--n1);text-decoration:none;transition:color .2s}
         .mobile-menu a:hover{color:var(--t)}
-        .mobile-menu .btn{margin-top:12px}
 
         /* SIDE NAV */
         .side-nav{position:fixed;right:16px;top:50%;transform:translateY(-50%);z-index:90;display:flex;flex-direction:column;gap:6px}
@@ -65,13 +61,24 @@
         .side-nav-tooltip{position:absolute;right:44px;top:50%;transform:translateY(-50%);background:var(--n1);color:var(--white);padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
         .side-nav a:hover .side-nav-tooltip{opacity:1}
 
-        /* HERO — FULLSCREEN */
-        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 0}
-        .hero h1{margin-bottom:20px}.hero h1 .accent{color:var(--t)}
-        .hero-sub{font-size:1.2rem;color:var(--n3);max-width:560px;margin:0 auto 32px;line-height:1.7}
-        .hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
-        .hero-stats{display:flex;justify-content:center;gap:48px;padding-top:28px;border-top:1px solid rgba(0,0,0,.06)}
-        .hero-stat{text-align:center}.hero-stat .num{font-size:1.8rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.82rem;color:var(--n4);margin-top:4px}
+        /* HERO — FULLSCREEN, combines hero + intro */
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px}
+        .hero-inner{display:flex;flex-direction:column;align-items:center;gap:32px}
+        .hero-top{text-align:center}
+        .hero h1{margin-bottom:16px}.hero h1 .accent{color:var(--t)}
+        .hero-sub{font-size:1.15rem;color:var(--n3);max-width:560px;margin:0 auto 28px;line-height:1.7}
+        .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+        /* EKATERINA BLOCK inside hero */
+        .hero-intro{display:flex;gap:28px;align-items:center;max-width:600px;text-align:left;background:rgba(255,255,255,.5);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:24px 28px;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+        .hero-intro-photo{width:80px;height:80px;border-radius:50%;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,var(--tl),var(--tg))}
+        .hero-intro-photo img{width:100%;height:100%;object-fit:cover}
+        .hero-intro-text h3{font-size:1rem;margin-bottom:4px}
+        .hero-intro-text p{color:var(--n3);font-size:.85rem;line-height:1.6;margin-bottom:0}
+
+        /* STATS */
+        .hero-stats{display:flex;justify-content:center;gap:40px;padding-top:20px;border-top:1px solid rgba(0,0,0,.06)}
+        .hero-stat{text-align:center}.hero-stat .num{font-size:1.6rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.78rem;color:var(--n4);margin-top:2px}
 
         /* SCROLL DOWN */
         .scroll-down{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:90;transition:all .25s;animation:bounceDown 2s ease-in-out infinite}
@@ -80,120 +87,107 @@
         @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 
         /* SECTIONS */
-        .bg-white{background:rgba(255,255,255,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-        .bg-light{background:rgba(245,247,250,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+        .bg-white{background:rgba(255,255,255,.6);backdrop-filter:blur(12px)}
+        .bg-light{background:rgba(245,247,250,.6);backdrop-filter:blur(12px)}
         .divider{height:1px;background:linear-gradient(90deg,transparent 5%,rgba(0,188,212,.12) 50%,transparent 95%)}
-        .section-full{min-height:100vh;display:flex;align-items:center}
-
-        /* INTRO */
-        .intro{padding:60px 0}
-        .intro-inner{display:flex;gap:40px;align-items:center;max-width:860px;margin:0 auto}
-        .intro-photo{width:180px;height:180px;border-radius:50%;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,var(--tl),var(--tg));box-shadow:0 12px 40px rgba(0,188,212,.12)}
-        .intro-photo img{width:100%;height:100%;object-fit:cover}
-        .intro-text{flex:1}.intro-text h2{text-align:left;margin-bottom:10px;font-size:1.4rem}.intro-text p{color:var(--n3);font-size:.92rem;margin-bottom:8px;line-height:1.7}
-        .intro-text .intro-quote{font-style:italic;color:var(--t2);font-weight:600;font-size:.95rem;margin-top:12px;padding-left:16px;border-left:3px solid var(--tl)}
 
         /* FOR WHOM */
-        .for-whom{padding:60px 0}
+        .for-whom{padding:50px 0}
         .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-        .card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:22px 16px;text-align:center;transition:all .25s cubic-bezier(.16,1,.3,1);box-shadow:0 2px 10px rgba(0,0,0,.03)}
-        .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,188,212,.08);border-color:var(--tl)}
-        .card:active{transform:translateY(0) scale(.98)}
+        .card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:16px;padding:22px 16px;text-align:center;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+        .card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,188,212,.08)}
         .card-icon{width:44px;height:44px;border-radius:12px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
         .card-icon svg{width:20px;height:20px;color:var(--t)}
         .card h3{margin-bottom:5px;font-size:.92rem}.card p{color:var(--n3);font-size:.82rem;line-height:1.5}
 
-        /* SHOWCASE — FULL WIDTH */
-        .showcase{padding:50px 0}
-        .showcase-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px;flex-wrap:wrap;gap:10px;padding:0 24px}
-        .showcase-text{max-width:400px}.showcase-text h2{text-align:left;margin-bottom:4px;font-size:1.3rem}.showcase-text p{color:var(--n3);font-size:.82rem}
-        .showcase-tags{display:flex;gap:5px;flex-wrap:wrap}
-        .showcase-tag{padding:3px 12px;border-radius:14px;font-size:.72rem;font-weight:600;background:rgba(255,255,255,.7);color:var(--n2);border:1px solid rgba(0,0,0,.05)}
-        .showcase-scroll{position:relative;overflow:hidden;padding:0}
-        .showcase-track{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:none;scroll-behavior:auto;padding:4px 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+        /* SHOWCASE — BIG */
+        .showcase{padding:60px 0}
+        .showcase-header{text-align:center;margin-bottom:24px}
+        .showcase-header h2{margin-bottom:8px}.showcase-header p{color:var(--n3);font-size:.9rem}
+        .showcase-scroll{position:relative;overflow:hidden}
+        .showcase-track{display:flex;gap:12px;overflow-x:auto;padding:8px 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
         .showcase-track::-webkit-scrollbar{display:none}
-        .showcase-item{flex:0 0 260px;border-radius:14px;overflow:hidden;aspect-ratio:9/16;position:relative;cursor:pointer;background:var(--n6);box-shadow:0 4px 16px rgba(0,0,0,.05)}
+        .showcase-item{flex:0 0 280px;border-radius:16px;overflow:hidden;aspect-ratio:9/16;position:relative;cursor:pointer;background:var(--n6);box-shadow:0 4px 20px rgba(0,0,0,.06)}
         .showcase-item img,.showcase-item video{width:100%;height:100%;object-fit:cover;display:block}
-        .video-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.5);color:var(--white);font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:6px;display:flex;align-items:center;gap:3px;backdrop-filter:blur(4px)}
+        .video-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.5);color:var(--white);font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:6px;display:flex;align-items:center;gap:3px}
         .video-badge svg{width:10px;height:10px}
         .showcase-item .play-hint{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.08);opacity:0;transition:opacity .25s}
         .showcase-item:hover .play-hint{opacity:1}
-        .play-hint svg{width:44px;height:44px;fill:rgba(255,255,255,.8);filter:drop-shadow(0 2px 6px rgba(0,0,0,.3))}
+        .play-hint svg{width:44px;height:44px;fill:rgba(255,255,255,.8)}
         .scroll-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid rgba(0,0,0,.06);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.07);z-index:2;transition:all .2s}
         .scroll-nav:hover{box-shadow:0 6px 20px rgba(0,0,0,.1);transform:translateY(-50%) scale(1.06)}
         .scroll-nav svg{width:16px;height:16px;color:var(--n1)}
-        .scroll-prev{left:0}.scroll-next{right:0}
+        .scroll-prev{left:8px}.scroll-next{right:8px}
 
-        /* RESULTS — ROW, COMPACT */
-        .results{padding:50px 0}
+        /* RESULTS */
+        .results{padding:40px 0}
         .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-        .result-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:16px;padding:20px;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.03)}
-        .result-card:hover{box-shadow:0 6px 20px rgba(0,188,212,.07);border-color:var(--tl)}
-        .result-icon{width:42px;height:42px;border-radius:12px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+        .result-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:18px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+        .result-card:hover{box-shadow:0 6px 20px rgba(0,188,212,.07)}
+        .result-icon{width:40px;height:40px;border-radius:11px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
         .result-icon svg{width:20px;height:20px;color:var(--t)}
         .result-card h3{color:var(--t2);margin-bottom:4px;font-size:.9rem}.result-card p{color:var(--n3);font-size:.8rem;line-height:1.5}
 
-        /* PROGRAM — FULLSCREEN */
-        .program{padding:100px 0}
-        .modules{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:800px;margin:0 auto}
-        .module{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:16px;padding:20px;display:flex;align-items:flex-start;gap:14px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
-        .module:hover{box-shadow:0 6px 20px rgba(0,188,212,.07);border-color:var(--tl)}
-        .module-num{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;flex-shrink:0}
-        .module-content h3{margin-bottom:4px;font-size:.92rem}.module-content p{color:var(--n3);font-size:.82rem}
+        /* PROGRAM — COLUMN */
+        .program{padding:60px 0}
+        .modules{display:flex;flex-direction:column;gap:10px}
+        .module{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:14px;padding:18px 22px;display:flex;align-items:center;gap:14px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+        .module:hover{box-shadow:0 6px 20px rgba(0,188,212,.07)}
+        .module-num{background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.95rem;flex-shrink:0}
+        .module-content h3{margin-bottom:2px;font-size:.92rem}.module-content p{color:var(--n3);font-size:.84rem}
 
-        /* REVIEWS */
-        .reviews{padding:80px 0}
+        /* REVIEWS — BIGGER */
+        .reviews{padding:60px 0}
         .reviews-scroll{position:relative;overflow:hidden;padding:0 24px}
-        .reviews-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:none;scroll-behavior:auto;padding:6px 0;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+        .reviews-track{display:flex;gap:14px;overflow-x:auto;padding:6px 0;scrollbar-width:none}
         .reviews-track::-webkit-scrollbar{display:none}
-        .review-card{flex:0 0 360px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:18px;padding:26px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
-        .review-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-        .review-avatar{width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tg)}
+        .review-card{flex:0 0 380px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:18px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+        .review-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+        .review-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--tg)}
         .review-avatar img{width:100%;height:100%;object-fit:cover}
-        .review-info h4{font-size:.9rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.72rem;color:var(--n4)}
-        .review-stars{color:var(--t);font-size:.85rem;margin-bottom:8px;letter-spacing:2px}
-        .review-text{color:var(--n2);font-size:.84rem;line-height:1.7}
-        .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-        .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.76rem;cursor:pointer;padding:0;margin-top:6px}
-        .review-toggle:hover{text-decoration:underline}
+        .review-info h4{font-size:.92rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.75rem;color:var(--n4)}
+        .review-stars{color:var(--t);font-size:.88rem;margin-bottom:8px;letter-spacing:2px}
+        .review-text{color:var(--n2);font-size:.88rem;line-height:1.7}
+        .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+        .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer;padding:0;margin-top:6px}
 
-        /* PRICING — WIDE */
+        /* PRICING — FULLSCREEN */
         .pricing{padding:80px 0}
         .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-        .price-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:32px 24px;text-align:center;transition:all .25s;display:flex;flex-direction:column;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+        .price-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:36px 28px;text-align:center;transition:all .25s;display:flex;flex-direction:column;position:relative;box-shadow:0 2px 12px rgba(0,0,0,.03)}
         .price-card.hot{border-color:var(--t);transform:scale(1.03);box-shadow:0 20px 50px rgba(0,188,212,.12)}
         .price-card.hot::before{content:'Рекомендуем';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);padding:4px 18px;border-radius:16px;font-size:.74rem;font-weight:700}
         .price-card h3{margin-bottom:10px;font-size:1.1rem}
-        .price-val{font-size:1.8rem;font-weight:800;color:var(--t);margin-bottom:2px}
-        .price-old{text-decoration:line-through;color:var(--n4);font-size:.88rem;margin-bottom:2px}
-        .price-note{color:var(--n4);font-size:.78rem;margin-bottom:14px}
+        .price-val{font-size:2rem;font-weight:800;color:var(--t);margin-bottom:2px}
+        .price-old{text-decoration:line-through;color:var(--n4);font-size:.9rem;margin-bottom:2px}
+        .price-note{color:var(--n4);font-size:.78rem;margin-bottom:16px}
         .price-list{list-style:none;text-align:left;margin-bottom:20px;flex:1}
-        .price-list li{padding:7px 0;border-bottom:1px solid rgba(0,0,0,.03);font-size:.84rem;display:flex;gap:8px;align-items:center}
+        .price-list li{padding:7px 0;border-bottom:1px solid rgba(0,0,0,.03);font-size:.86rem;display:flex;gap:8px;align-items:center}
         .price-list li svg{flex-shrink:0;color:var(--t)}
 
         /* TIMER */
         .timer-bar{text-align:center;padding:20px 0}
-        .timer-bar h3{font-size:.92rem;margin-bottom:6px;font-weight:600;color:var(--n2)}
-        .timer-val{font-size:1.6rem;font-weight:800;color:#ef4444}
+        .timer-bar h3{font-size:.95rem;margin-bottom:6px;font-weight:600;color:var(--n2)}
+        .timer-val{font-size:1.8rem;font-weight:800;color:#ef4444}
 
         /* WHY */
-        .why{padding:80px 0}
-        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:800px;margin:0 auto}
-        .why-card{padding:24px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:18px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
-        .why-card:hover{box-shadow:0 6px 20px rgba(0,188,212,.07);border-color:var(--tl)}
-        .why-icon{width:40px;height:40px;border-radius:11px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
-        .why-icon svg{width:20px;height:20px;color:var(--t)}
+        .why{padding:50px 0}
+        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        .why-card{padding:22px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:16px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+        .why-card:hover{box-shadow:0 6px 20px rgba(0,188,212,.07)}
+        .why-icon{width:38px;height:38px;border-radius:10px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+        .why-icon svg{width:18px;height:18px;color:var(--t)}
         .why-card h3{margin-bottom:4px;font-size:.95rem}.why-card p{color:var(--n3);font-size:.82rem;line-height:1.5}
 
         /* HOW */
-        .how{padding:80px 0}
-        .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;max-width:800px;margin:0 auto}
+        .how{padding:50px 0}
+        .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
         .how-step{counter-increment:step;text-align:center}
         .how-step::before{content:counter(step);display:block;width:40px;height:40px;margin:0 auto 10px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border-radius:12px;font-weight:800;font-size:.95rem;line-height:40px}
-        .how-step h3{margin-bottom:4px;font-size:.92rem}.how-step p{color:var(--n3);font-size:.8rem;line-height:1.4}
+        .how-step h3{margin-bottom:4px;font-size:.92rem}.how-step p{color:var(--n3);font-size:.82rem;line-height:1.4}
 
         /* FAQ */
-        .faq{padding:80px 0}
+        .faq{padding:50px 0}
         .faq-list{max-width:680px;margin:0 auto}
         .faq-item{border-bottom:1px solid rgba(0,0,0,.05);padding:14px 0}
         .faq-q{font-weight:700;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px}
@@ -203,87 +197,58 @@
         .faq-item.open .faq-a{display:block}
 
         /* CTA */
-        .cta{text-align:center;padding:80px 0}
-        .cta h2{margin-bottom:12px}.cta p{margin-bottom:28px;font-size:1rem;color:var(--n3);max-width:440px;margin-left:auto;margin-right:auto}
+        .cta{text-align:center;padding:50px 0}
+        .cta h2{margin-bottom:10px}.cta p{margin-bottom:24px;font-size:.95rem;color:var(--n3);max-width:420px;margin-left:auto;margin-right:auto}
 
         /* CONTACT */
-        .contact{padding:80px 0}
-        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-        .contact-info{display:flex;flex-direction:column;gap:14px}
+        .contact{padding:50px 0}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+        .contact-info{display:flex;flex-direction:column;gap:12px}
         .contact-item{display:flex;gap:10px;align-items:flex-start}
-        .contact-icon{width:36px;height:36px;border-radius:10px;background:var(--tg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .contact-icon svg{width:16px;height:16px;color:var(--t)}
-        .contact-item h4{font-size:.88rem;margin-bottom:1px}.contact-item p{color:var(--n3);font-size:.82rem}
-        .contact-item a{color:var(--t);text-decoration:none;font-weight:600}.contact-item a:hover{text-decoration:underline}
-        .contact-form{display:flex;flex-direction:column;gap:10px}
-        .contact-form input,.contact-form textarea{font-family:inherit;font-size:.88rem;padding:12px 16px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:rgba(255,255,255,.7);transition:border-color .2s;resize:none}
+        .contact-icon{width:34px;height:34px;border-radius:9px;background:var(--tg);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .contact-icon svg{width:15px;height:15px;color:var(--t)}
+        .contact-item h4{font-size:.85rem;margin-bottom:1px}.contact-item p{color:var(--n3);font-size:.82rem}
+        .contact-item a{color:var(--t);text-decoration:none;font-weight:600}
+        .contact-form{display:flex;flex-direction:column;gap:9px}
+        .contact-form input,.contact-form textarea{font-family:inherit;font-size:.85rem;padding:11px 14px;border:1px solid rgba(0,0,0,.08);border-radius:10px;background:rgba(255,255,255,.7);transition:border-color .2s;resize:none}
         .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--t)}
 
         /* FOOTER */
-        footer{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-top:1px solid rgba(0,0,0,.04);text-align:center;padding:32px 0}
-        .footer-links{display:flex;justify-content:center;gap:18px;margin-bottom:10px;flex-wrap:wrap}
-        .footer-links a{color:var(--t);text-decoration:none;font-weight:600;font-size:.92rem;transition:color .2s}
-        .footer-links a:hover{color:var(--t2)}
-        footer p{color:var(--n4);font-size:.74rem}
+        footer{background:rgba(255,255,255,.7);backdrop-filter:blur(12px);border-top:1px solid rgba(0,0,0,.04);text-align:center;padding:28px 0}
+        .footer-links{display:flex;justify-content:center;gap:16px;margin-bottom:8px;flex-wrap:wrap}
+        .footer-links a{color:var(--t);text-decoration:none;font-weight:600;font-size:.88rem}
+        footer p{color:var(--n4);font-size:.72rem}
 
         @media(max-width:768px){
-            section{padding:40px 0}
-            .section-full{min-height:auto}
-            h1{font-size:1.8rem}
-            h2{font-size:1.3rem;margin-bottom:24px}
-            .hero{padding:80px 0 40px}
-            .hero h1{font-size:1.8rem}
-            .hero-sub{font-size:.95rem;margin-bottom:20px}
-            .hero-btns{flex-direction:column;align-items:center;gap:10px}
-            .hero-btns .btn{width:100%;justify-content:center}
+            section{padding:36px 0}
+            h1{font-size:1.7rem}h2{font-size:1.2rem;margin-bottom:20px}
+            .hero{padding:80px 20px 40px}.hero h1{font-size:1.7rem}
+            .hero-sub{font-size:.9rem;margin-bottom:20px}
+            .hero-btns{flex-direction:column;align-items:center;gap:10px}.hero-btns .btn{width:100%;justify-content:center}
+            .hero-intro{flex-direction:column;text-align:center;gap:16px;padding:18px}
+            .hero-intro-photo{width:60px;height:60px}
             .hero-stats{gap:16px;flex-wrap:wrap;justify-content:center}
-            .hero-stat .num{font-size:1.3rem}
-            .intro-inner{flex-direction:column;text-align:center;gap:20px}
-            .intro-photo{width:120px;height:120px}
-            .intro-text h2{text-align:center;font-size:1.2rem}
-            .intro-text p{font-size:.85rem}
-            .intro-text .intro-quote{border-left:none;padding-left:0;font-size:.88rem}
+            .hero-stat .num{font-size:1.2rem}
             .cards{grid-template-columns:1fr 1fr;gap:10px}
-            .card{padding:16px 12px}
-            .card-icon{width:38px;height:38px}
-            .card-icon svg{width:16px;height:16px}
-            .card h3{font-size:.85rem}
-            .card p{font-size:.76rem}
+            .card{padding:16px 12px}.card h3{font-size:.85rem}.card p{font-size:.76rem}
             .results-grid{grid-template-columns:1fr 1fr;gap:10px}
             .result-card{padding:14px 12px}
-            .modules{grid-template-columns:1fr;gap:8px}
-            .module{padding:14px 16px}
-            .why-grid{grid-template-columns:1fr;gap:10px}
-            .how-steps{grid-template-columns:1fr 1fr;gap:12px}
+            .modules{gap:8px}.module{padding:14px 16px}
             .price-grid{grid-template-columns:1fr;gap:12px}
-            .price-card{padding:22px 18px}
-            .price-card.hot{transform:none}
-            .contact-grid{grid-template-columns:1fr;gap:20px}
-            .nav-links{display:none}
-            nav .btn{display:none}
-            .hamburger{display:flex}
-            .showcase-item{flex:0 0 180px}
-            .showcase-track{padding:4px 16px}
-            .showcase-header{padding:0 16px}
-            .review-card{flex:0 0 260px;padding:18px}
+            .price-card{padding:24px 18px}.price-card.hot{transform:none}
+            .contact-grid{grid-template-columns:1fr;gap:18px}
+            .nav-links{display:none}nav .btn{display:none}.hamburger{display:flex}
+            .showcase-item{flex:0 0 200px}
+            .review-card{flex:0 0 280px;padding:20px}
             .side-nav{display:none}
             .scroll-down{bottom:16px;right:16px;width:38px;height:38px}
-            .scroll-down svg{width:16px;height:16px}
-            .faq-list{max-width:100%}
-            .faq-q{font-size:.85rem}
-            .faq-a{font-size:.82rem}
-            .timer-bar h3{font-size:.82rem}
-            .timer-val{font-size:1.2rem}
-            .mobile-menu a{font-size:1rem}
-            .mobile-menu .btn{font-size:.88rem;padding:12px 28px}
         }
     </style>
 </head>
 <body>
 
-<div class="mesh-bg"><div class="mesh-blob b1"></div><div class="mesh-blob b2"></div><div class="mesh-blob b3"></div><div class="mesh-blob b4"></div></div>
+<div class="mesh-bg"><div class="mesh-blob b1"></div><div class="mesh-blob b2"></div><div class="mesh-blob b3"></div></div>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
     <a href="#showcase" onclick="closeMenu()">Работы</a>
     <a href="#program" onclick="closeMenu()">Программа</a>
@@ -294,7 +259,6 @@
     <a href="quiz.html" class="btn">Пройти тест</a>
 </div>
 
-<!-- NAV -->
 <nav>
     <div class="wrap">
         <a href="#" class="logo">Tsvetkova<span>ProAi</span></a>
@@ -311,10 +275,9 @@
     </div>
 </nav>
 
-<!-- SIDE NAV -->
 <div class="side-nav" id="sideNav">
     <a href="#hero"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg><span class="side-nav-tooltip">Главная</span></a>
-    <a href="#for-whom"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span class="side-nav-tooltip">Для кого</span></a>
+    <a href="#for-whom"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg><span class="side-nav-tooltip">Для кого</span></a>
     <a href="#showcase"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span class="side-nav-tooltip">Работы</span></a>
     <a href="#program"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg><span class="side-nav-tooltip">Программа</span></a>
     <a href="#reviews"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span class="side-nav-tooltip">Отзывы</span></a>
@@ -323,11 +286,10 @@
     <a href="#contact"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span class="side-nav-tooltip">Контакты</span></a>
 </div>
 
-<!-- HERO — FULLSCREEN -->
-<section class="hero section-full" id="hero">
-    <div class="wrap">
-        <div class="fade-up">
-            <span class="section-label">Обучение нейросетям</span>
+<!-- HERO + EKATERINA — FULLSCREEN -->
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div class="hero-top fade-up">
             <h1>Научись создавать<br><span class="accent">фото, видео и тексты</span><br>с помощью нейросетей</h1>
             <p class="hero-sub">Практический курс для тех, кто хочет освоить ИИ — для творчества, работы или заработка</p>
             <div class="hero-btns">
@@ -335,25 +297,17 @@
                 <a href="#showcase" class="btn btn-outline btn-lg">Смотреть работы</a>
             </div>
         </div>
+        <div class="hero-intro fade-up">
+            <div class="hero-intro-photo"><img src="media/ekaterina.jpg" alt="Екатерина" onerror="this.style.display='none'"></div>
+            <div class="hero-intro-text">
+                <h3>Привет, я Екатерина</h3>
+                <p>Обучаю работе с нейросетями — от фото до видео. Через мои курсы прошли десятки учеников. Начни с бесплатного теста!</p>
+            </div>
+        </div>
         <div class="hero-stats fade-up">
             <div class="hero-stat"><div class="num">20+</div><div class="label">довольных учеников</div></div>
             <div class="hero-stat"><div class="num">10</div><div class="label">недель обучения</div></div>
             <div class="hero-stat"><div class="num">1 000+</div><div class="label">материалов</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- EKATERINA -->
-<section class="intro">
-    <div class="wrap">
-        <div class="intro-inner fade-up">
-            <div class="intro-photo"><img src="media/ekaterina.jpg" alt="Екатерина Цветкова" onerror="this.style.display='none'"></div>
-            <div class="intro-text">
-                <h2>Привет, я Екатерина</h2>
-                <p>Мне 41 год, и я увлечена нейросетями. Начинала с того, что просто хотела красивые фото для себя — а сейчас обучаю других создавать контент, который раньше стоил десятки тысяч рублей.</p>
-                <p>Веду канал с промптами и обучающую группу. Через мои курсы прошли десятки учеников — от мам в декрете до фрилансеров и предпринимателей. Каждый из них начал с нуля и теперь создаёт фото, видео и тексты с помощью нейросетей.</p>
-                <div class="intro-quote">«Нейросети — это не сложная технология. Это инструмент, который даёт свободу. И я научу тебя им пользоваться.»</div>
-            </div>
         </div>
     </div>
 </section>
@@ -365,66 +319,64 @@
     <div class="wrap">
         <h2 class="fade-up">Для кого этот курс</h2>
         <div class="cards">
-            <div class="card fade-up stagger-1"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z"/></svg></div><h3>Мама в декрете</h3><p>Подработка из дома без опыта. Генерируй фото и видео для клиентов, пока дети спят</p></div>
-            <div class="card fade-up stagger-2"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Фрилансер</h3><p>Добавь нейросети в арсенал. Делай за час то, что раньше занимало день. Чек выше, клиентов больше</p></div>
-            <div class="card fade-up stagger-3"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Маркетплейсы</h3><p>Делай инфографику и карточки товаров сам — не нужен дизайнер. Экономь 15К+ в месяц</p></div>
-            <div class="card fade-up stagger-4"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Мастера</h3><p>Ресницы, маникюр, торты — красиво веди свои страницы в соцсетях. Клиенты сами найдут тебя</p></div>
-            <div class="card fade-up stagger-5"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Креативные люди</h3><p>Хочешь творить? Нейросети — твой инструмент для самовыражения. Арт, портреты, анимация</p></div>
-            <div class="card fade-up stagger-6"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3>Все возрасты</h3><p>От 10 до 60+ лет. Самому младшему ученику было 10 — всё объяснили понятно. Нейросети для каждого</p></div>
+            <div class="card fade-up stagger-1"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c2.5 0 4.5-2 4.5-4.5S14.5 3 12 3 7.5 5 7.5 7.5 9.5 12 12 12zm0 1.5c-3 0-9 1.5-9 4.5V20h18v-2c0-3-6-4.5-9-4.5z"/></svg></div><h3>Мама в декрете</h3><p>Подработка из дома. Генерируй фото и видео для клиентов</p></div>
+            <div class="card fade-up stagger-2"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Фрилансер</h3><p>Добавь нейросети в арсенал. Чек выше, клиентов больше</p></div>
+            <div class="card fade-up stagger-3"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Маркетплейсы</h3><p>Инфографика и карточки товаров — не нужен дизайнер</p></div>
+            <div class="card fade-up stagger-4"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div><h3>Мастера</h3><p>Ресницы, маникюр, торты — красиво веди страницы в соцсетях</p></div>
+            <div class="card fade-up stagger-5"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Креативные</h3><p>Хочешь творить? Нейросети — инструмент для самовыражения</p></div>
+            <div class="card fade-up stagger-6"><div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><h3>Все возрасты</h3><p>От 10 до 60+ лет. Нейросети для каждого</p></div>
         </div>
     </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- SHOWCASE — FULLSCREEN -->
-<section class="showcase bg-white section-full" id="showcase">
-    <div class="wrap">
-        <div class="showcase-header fade-up">
-            <div class="showcase-text"><span class="section-label">Работы учеников</span><h2>Что создают наши ученики</h2><p>Наведи на видео чтобы посмотреть. Нажми — включится звук.</p></div>
-            <div class="showcase-tags"><span class="showcase-tag">Фото</span><span class="showcase-tag">Видео</span><span class="showcase-tag">Арт</span><span class="showcase-tag">Логотипы</span></div>
+<!-- SHOWCASE — BIG -->
+<section class="showcase bg-white" id="showcase">
+    <div class="showcase-header fade-up">
+        <h2>Что создают наши ученики</h2>
+        <p>Наведи на видео чтобы посмотреть. Нажми — включится звук.</p>
+    </div>
+    <div class="showcase-scroll fade-up">
+        <button class="scroll-nav scroll-prev" onclick="scrollShowcase(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="showcase-track" id="showcaseTrack">
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-35-48.jpg" alt=""></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-35-53.jpg" alt=""></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-08.jpg" alt=""></div>
+            <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-04.mp4"><video src="student-works/video_2026-05-24_16-36-04.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-18.jpg" alt=""></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-21.jpg" alt=""></div>
+            <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-15.mp4"><video src="student-works/video_2026-05-24_16-36-15.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-42.jpg" alt=""></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-45.jpg" alt=""></div>
+            <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-33.mp4"><video src="student-works/video_2026-05-24_16-36-33.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-37-12.jpg" alt=""></div>
+            <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-37-17.jpg" alt=""></div>
+            <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-52.mp4"><video src="student-works/video_2026-05-24_16-36-52.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
         </div>
-        <div class="showcase-scroll fade-up">
-            <button class="scroll-nav scroll-prev" onclick="scrollShowcase(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-            <div class="showcase-track" id="showcaseTrack">
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-35-48.jpg" alt=""></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-35-53.jpg" alt=""></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-08.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-04.mp4"><video src="student-works/video_2026-05-24_16-36-04.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-18.jpg" alt=""></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-21.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-15.mp4"><video src="student-works/video_2026-05-24_16-36-15.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-42.jpg" alt=""></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-36-45.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-33.mp4"><video src="student-works/video_2026-05-24_16-36-33.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-37-12.jpg" alt=""></div>
-                <div class="showcase-item"><img src="student-works/photo_2026-05-24_16-37-17.jpg" alt=""></div>
-                <div class="showcase-item" data-video="student-works/video_2026-05-24_16-36-52.mp4"><video src="student-works/video_2026-05-24_16-36-52.mp4" muted loop preload="metadata"></video><div class="video-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg>Видео</div><div class="play-hint"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
-            </div>
-            <button class="scroll-nav scroll-next" onclick="scrollShowcase(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-        </div>
+        <button class="scroll-nav scroll-next" onclick="scrollShowcase(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
     </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- RESULTS — FULLSCREEN -->
-<section class="results bg-light section-full">
+<!-- RESULTS -->
+<section class="results bg-light">
     <div class="wrap">
         <h2 class="fade-up">Что ты получишь после курса</h2>
         <div class="results-grid">
-            <div class="result-card fade-up stagger-1"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><h3>Портфолио из 20+ работ</h3><p>Фото, видео, арт, логотипы — готовые примеры для показа клиентам</p></div>
-            <div class="result-card fade-up stagger-2"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Навыки для заработка</h3><p>Фриланс, подработка или свой бизнес на нейросетях</p></div>
-            <div class="result-card fade-up stagger-3"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Закрытое сообщество</h3><p>Группа с промптами, обновлениями и поддержкой единомышленников</p></div>
-            <div class="result-card fade-up stagger-4"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Экономия времени</h3><p>Делай за 10 минут то, что раньше занимало часы и стоило тысячи</p></div>
+            <div class="result-card fade-up stagger-1"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><h3>Портфолио 20+ работ</h3><p>Фото, видео, арт для показа клиентам</p></div>
+            <div class="result-card fade-up stagger-2"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Навыки заработка</h3><p>Фриланс, подработка, бизнес</p></div>
+            <div class="result-card fade-up stagger-3"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Сообщество</h3><p>Группа с промптами и поддержкой</p></div>
+            <div class="result-card fade-up stagger-4"><div class="result-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Экономия времени</h3><p>За 10 минут то, что раньше часы</p></div>
         </div>
     </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- PROGRAM — FULLSCREEN -->
-<section class="program bg-white section-full" id="program">
+<!-- PROGRAM — COLUMN -->
+<section class="program bg-white" id="program">
     <div class="wrap">
         <h2 class="fade-up">Программа курса</h2>
         <div class="modules">
@@ -440,7 +392,7 @@
 
 <div class="divider"></div>
 
-<!-- REVIEWS -->
+<!-- REVIEWS — BIGGER -->
 <section class="reviews bg-light" id="reviews">
     <div class="wrap">
         <h2 class="fade-up">Отзывы учеников</h2>
@@ -448,12 +400,12 @@
             <button class="scroll-nav scroll-prev" onclick="scrollReviews(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
             <div class="reviews-track" id="reviewsTrack">
                 <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Александра.jpg" alt=""></div><div class="review-info"><h4>Александра</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt1">Занятия стали настоящим открытием! Екатерина доступно объясняет основы, делится секретами мастерства и вдохновляет на создание уникальных работ. Научилась выражать эмоции через рисунок. Рекомендую!</div><button class="review-toggle" onclick="toggleReview('rt1',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Мальгина Надежда.jpg" alt=""></div><div class="review-info"><h4>Надежда</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt2">Как человек далёкий от компьютеров, приходила в дикий восторг от фото и видео. Записалась на курс и не пожалела! Заразила мужа, стала создавать свои креативы. Советую!</div><button class="review-toggle" onclick="toggleReview('rt2',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Ирина.jpg" alt=""></div><div class="review-info"><h4>Ирина</h4><span>Мама 4 детей</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt3">Перестала спать потому что процесс затягивает. Нейронка стала 6-й любовью — у меня 4-ро детей но это за гранью. Спасибо за терпение!</div><button class="review-toggle" onclick="toggleReview('rt3',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Валерия.jpg" alt=""></div><div class="review-info"><h4>Валерия</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt4">На работе стресс, жизнь не в кайф. Открыла нейро — новый мир. Катя на связи 24/7. Все нейронки под рукой!</div><button class="review-toggle" onclick="toggleReview('rt4',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Светлана Ускова.jpg" alt=""></div><div class="review-info"><h4>Светлана</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt5">Одно из лучших обучений. Материал просто и понятно. Нейросети стали частью жизни. Катя мотивирует двигаться дальше!</div><button class="review-toggle" onclick="toggleReview('rt5',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Наталья.jpg" alt=""></div><div class="review-info"><h4>Наталья</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt6">Курс понятный и структурированный. Много практики. Получила базу и понимание как применять нейросети в реальных проектах.</div><button class="review-toggle" onclick="toggleReview('rt6',this)">Читать полностью</button></div>
-                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Татьяна.jpg" alt=""></div><div class="review-info"><h4>Татьяна</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt7">Объясняет простыми словами. Всё по шагам. Много примеров. Отдельный плюс — поддержка и обратная связь!</div><button class="review-toggle" onclick="toggleReview('rt7',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Мальгина Надежда.jpg" alt=""></div><div class="review-info"><h4>Надежда</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt2">Как человек далёкий от компьютеров, приходила в дикий восторг. Записалась на курс и не пожалела! Заразила мужа. Советую!</div><button class="review-toggle" onclick="toggleReview('rt2',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Ирина.jpg" alt=""></div><div class="review-info"><h4>Ирина</h4><span>Мама 4 детей</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt3">Перестала спать — процесс затягивает. Нейронка стала 6-й любовью. Спасибо за терпение!</div><button class="review-toggle" onclick="toggleReview('rt3',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Валерия.jpg" alt=""></div><div class="review-info"><h4>Валерия</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt4">На работе стресс. Открыла нейро — новый мир. Катя на связи 24/7. Все нейронки под рукой!</div><button class="review-toggle" onclick="toggleReview('rt4',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Светлана Ускова.jpg" alt=""></div><div class="review-info"><h4>Светлана</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt5">Одно из лучших обучений. Материал просто и понятно. Нейросети стали частью жизни.</div><button class="review-toggle" onclick="toggleReview('rt5',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Наталья.jpg" alt=""></div><div class="review-info"><h4>Наталья</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt6">Курс понятный и структурированный. Много практики. Получила базу для реальных проектов.</div><button class="review-toggle" onclick="toggleReview('rt6',this)">Читать полностью</button></div>
+                <div class="review-card"><div class="review-top"><div class="review-avatar"><img src="reviews/Татьяна.jpg" alt=""></div><div class="review-info"><h4>Татьяна</h4><span>Ученица курса</span></div></div><div class="review-stars">★★★★★</div><div class="review-text collapsed" id="rt7">Объясняет простыми словами. Всё по шагам. Отдельный плюс — поддержка и обратная связь!</div><button class="review-toggle" onclick="toggleReview('rt7',this)">Читать полностью</button></div>
             </div>
             <button class="scroll-nav scroll-next" onclick="scrollReviews(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
@@ -502,7 +454,6 @@
                     <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Всё из 1 ступени</li>
                     <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Продвинутые техники</li>
                     <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>TikTok, Reels, монтаж</li>
-                    <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Автоматизация и боты</li>
                     <li><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M5 13l4 4L19 7"/></svg>Закрытая 2 ступень</li>
                 </ul>
                 <a href="#" class="btn" style="width:100%;justify-content:center">Купить пакет</a>
@@ -519,9 +470,9 @@
     <div class="wrap">
         <h2 class="fade-up">Почему выбирают нас</h2>
         <div class="why-grid">
-            <div class="why-card fade-up stagger-1"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Живое сообщество</h3><p>Ученики помогают друг другу, делятся результатами и вдохновляют</p></div>
-            <div class="why-card fade-up stagger-2"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Практика с первого дня</h3><p>Каждый урок — реальный результат фото видео или текст</p></div>
-            <div class="why-card fade-up stagger-3"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Актуальные инструменты</h3><p>Работаем с самыми современными нейросетями которые реально используются на рынке</p></div>
+            <div class="why-card fade-up stagger-1"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Живое сообщество</h3><p>Ученики помогают друг другу и делятся результатами</p></div>
+            <div class="why-card fade-up stagger-2"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Практика с первого дня</h3><p>Каждый урок — реальный результат</p></div>
+            <div class="why-card fade-up stagger-3"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Актуальные инструменты</h3><p>Современные нейросети которые реально используются</p></div>
         </div>
     </div>
 </section>
@@ -548,12 +499,11 @@
     <div class="wrap">
         <h2 class="fade-up">Частые вопросы</h2>
         <div class="faq-list fade-up">
-            <div class="faq-item"><div class="faq-q">Нужен ли опыт?</div><div class="faq-a">Нет, курс для новичков. Начинаем с самых основ и пошагово доходим до продвинутых техник.</div></div>
-            <div class="faq-item"><div class="faq-q">Есть ли возрастные ограничения?</div><div class="faq-a">Нет! У нас учатся совершенно разные люди — от 10 лет до 60+. Самому младшему ученику было 10 лет, и мы всё ему спокойно объяснили. Нейросети подходят для любого возраста.</div></div>
-            <div class="faq-item"><div class="faq-q">Сколько длится доступ?</div><div class="faq-a">Бессрочно. Доступ ко всем материалам навсегда, включая обновления курса.</div></div>
-            <div class="faq-item"><div class="faq-q">Есть ли рассрочка?</div><div class="faq-a">Да, рассрочка есть. Переходите на страницу оплаты — там выберите удобный способ.</div></div>
-            <div class="faq-item"><div class="faq-q">Есть ли обратная связь?</div><div class="faq-a">Да, закрытая группа для учеников. Екатерина отвечает на вопросы, проверяет работы и помогает разобраться.</div></div>
-            <div class="faq-item"><div class="faq-q">На каком устройстве можно учиться?</div><div class="faq-a">На любом — телефон, планшет, компьютер. Все инструменты работают в браузере и Telegram.</div></div>
+            <div class="faq-item"><div class="faq-q">Нужен ли опыт?</div><div class="faq-a">Нет, курс для новичков. Начинаем с основ.</div></div>
+            <div class="faq-item"><div class="faq-q">Есть ли возрастные ограничения?</div><div class="faq-a">Нет! Учатся от 10 до 60+ лет. Нейросети для каждого.</div></div>
+            <div class="faq-item"><div class="faq-q">Сколько длится доступ?</div><div class="faq-a">Бессрочно, включая обновления.</div></div>
+            <div class="faq-item"><div class="faq-q">Есть ли рассрочка?</div><div class="faq-a">Да, переходите на оплату — там выберите удобный способ.</div></div>
+            <div class="faq-item"><div class="faq-q">Есть ли обратная связь?</div><div class="faq-a">Да, закрытая группа. Екатерина отвечает на вопросы.</div></div>
         </div>
     </div>
 </section>
@@ -564,7 +514,7 @@
 <section class="cta bg-white">
     <div class="wrap">
         <h2 class="fade-up">Готов(а) начать?</h2>
-        <p class="fade-up">Пройди тест за 2 минуты и узнай свой персональный путь</p>
+        <p class="fade-up">Пройди тест за 2 минуты и узнай свой путь</p>
         <a href="quiz.html" class="btn btn-lg fade-up">Пройти тест</a>
     </div>
 </section>
@@ -575,25 +525,22 @@
 <section class="contact bg-light" id="contact">
     <div class="wrap">
         <h2 class="fade-up">Свяжитесь с нами</h2>
-        <p class="fade-up" style="text-align:center;color:var(--n3);max-width:400px;margin:-24px auto 24px;font-size:.88rem">Есть вопросы? Заполните форму — ответим в течение часа</p>
         <div class="contact-grid fade-up">
             <div class="contact-info">
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><h4>Telegram</h4><p><a href="https://t.me/TsvetkovaKaterina">@TsvetkovaKaterina</a></p></div></div>
-                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div><h4>Канал промптов</h4><p><a href="https://t.me/prompt_tyt">@prompt_tyt</a></p></div></div>
-                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><div><h4>Группа</h4><p><a href="https://t.me/TsvetkovaProAi">@TsvetkovaProAi</a></p></div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/></svg></div><div><h4>Канал промптов</h4><p><a href="https://t.me/prompt_tyt">@prompt_tyt</a></p></div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><h4>Группа</h4><p><a href="https://t.me/TsvetkovaProAi">@TsvetkovaProAi</a></p></div></div>
             </div>
             <form class="contact-form" onsubmit="sendToTelegram(event)">
                 <input type="text" placeholder="Ваше имя" required id="contactName">
                 <input type="text" placeholder="Telegram или Email" required id="contactContact">
                 <textarea placeholder="Что вас интересует?" rows="3" id="contactMsg"></textarea>
                 <button type="submit" class="btn" style="width:100%;justify-content:center">Отправить</button>
-                <p style="color:var(--n4);font-size:.7rem;text-align:center">Сообщение отправится в Telegram</p>
             </form>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <div class="wrap">
         <div class="footer-links"><a href="https://t.me/TsvetkovaProAi_bot">Telegram-бот</a><a href="https://t.me/prompt_tyt">Канал промптов</a><a href="https://t.me/TsvetkovaProAi">Группа</a></div>
@@ -601,23 +548,15 @@
     </div>
 </footer>
 
-<!-- SCROLL DOWN -->
-<a class="scroll-down" href="#for-whom" title="Листай вниз"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+<a class="scroll-down" href="#for-whom" title="Вниз"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
 
 <script>
-// HAMBURGER
 function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open')}
 function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open')}
-
-// MESH PARALLAX
 const blobs=document.querySelectorAll('.mesh-blob');
 window.addEventListener('scroll',()=>{const s=window.pageYOffset;blobs.forEach((b,i)=>{b.style.transform=`translateY(${s*(.1+i*.05)}px) scale(${1+Math.sin(s*.002+i)*.05})`})},{passive:true});
-
-// SCROLL ANIMATIONS
 const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.08});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-
-// NAV + SIDE NAV ACTIVE
 const navLinks=document.querySelectorAll('.nav-links a');
 const sideLinks=document.querySelectorAll('.side-nav a');
 const allSections=document.querySelectorAll('section[id]');
@@ -625,26 +564,14 @@ function updateActiveNav(){let current='';allSections.forEach(s=>{const top=s.of
 navLinks.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active')});
 sideLinks.forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+current)a.classList.add('active')})}
 window.addEventListener('scroll',updateActiveNav,{passive:true});
-
-// SCROLL FUNCTIONS
-function scrollShowcase(dir){document.getElementById('showcaseTrack').scrollBy({left:dir*260,behavior:'smooth'})}
-function scrollReviews(dir){document.getElementById('reviewsTrack').scrollBy({left:dir*380,behavior:'smooth'})}
-
-// VIDEO HOVER/CLICK
-document.querySelectorAll('.showcase-item[data-video]').forEach(item=>{const v=item.querySelector('video');if(!v)return;item.addEventListener('mouseenter',()=>{v.muted=true;v.play().catch(()=>{})});item.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0});item.addEventListener('click',()=>{if(v.paused){v.muted=false;v.play().catch(()=>{})}else{v.muted=!v.muted}})});
-
-// TIMER
+function scrollShowcase(dir){document.getElementById('showcaseTrack').scrollBy({left:dir*290,behavior:'smooth'})}
+function scrollReviews(dir){document.getElementById('reviewsTrack').scrollBy({left:dir*400,behavior:'smooth'})}
+document.querySelectorAll('.showcase-item[data-video]').forEach(item=>{const v=item.querySelector('video');if(!v)return;item.addEventListener('mouseenter',()=>{v.muted=true;v.play().catch(()=>{})});
+item.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0});item.addEventListener('click',()=>{if(v.paused){v.muted=false;v.play().catch(()=>{})}else{v.muted=!v.muted}})});
 let gh=47,gm=59,gs=59;setInterval(()=>{gs--;if(gs<0){gs=59;gm--}if(gm<0){gm=59;gh--}if(gh<0)gh=0;const gt=document.getElementById('globalTimer');if(gt)gt.textContent=`${gh}:${String(gm).padStart(2,'0')}:${String(gs).padStart(2,'0')}`},1000);
-
-// FAQ
 document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',function(){this.closest('.faq-item').classList.toggle('open')}));
-
-// REVIEWS
 function toggleReview(id,btn){const el=document.getElementById(id);el.classList.toggle('collapsed');btn.textContent=el.classList.contains('collapsed')?'Читать полностью':'Свернуть'}
-
-// CONTACT
 function sendToTelegram(e){e.preventDefault();const n=document.getElementById('contactName').value,c=document.getElementById('contactContact').value,m=document.getElementById('contactMsg').value;window.open(`https://t.me/TsvetkovaKaterina?text=${encodeURIComponent('📝 Заявка\n\n👤 '+n+'\n📱 '+c+'\n💬 '+m)}`,'_blank')}
 </script>
-
 </body>
 </html>
