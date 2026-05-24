@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест — TsvetkovaProAi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{--t:#00BCD4;--t2:#0097A7;--t3:#26C6DA;--tl:#B2EBF2;--tg:#E0F7FA;--white:#fff;--n1:#1a1a2e;--n2:#2d2d44;--n3:#6b7280;--n4:#9ca3af;--n5:#f0f4f8}
+        html{scroll-behavior:smooth}
+        body{font-family:'Manrope',sans-serif;color:var(--n1);line-height:1.7;background:var(--n5);min-height:100vh;display:flex;flex-direction:column}
+        .wrap{max-width:680px;margin:0 auto;padding:0 24px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border:none;border-radius:60px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(0,188,212,.25)}
+        .btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,188,212,.4)}
+        .btn-outline{background:transparent;border:2px solid var(--t);color:var(--t);box-shadow:none}
+        .btn-outline:hover{background:var(--t);color:var(--white)}
+
+        /* NAV */
+        nav{padding:16px 0;background:var(--white);border-bottom:1px solid rgba(0,0,0,.05)}
+        nav .wrap{display:flex;justify-content:space-between;align-items:center}
+        .logo{font-weight:800;font-size:1.2rem;color:var(--n1);text-decoration:none}.logo span{color:var(--t)}
+        .back{color:var(--n3);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}.back:hover{color:var(--t)}
+
+        /* QUIZ */
+        .quiz-wrap{flex:1;display:flex;align-items:center;justify-content:center;padding:60px 0}
+        .quiz-box{background:var(--white);border-radius:24px;padding:48px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.06)}
+        .quiz-bar-wrap{background:var(--n5);border-radius:8px;height:6px;margin-bottom:32px;overflow:hidden}
+        .quiz-bar{background:linear-gradient(90deg,var(--t),var(--t3));height:100%;border-radius:8px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0}
+        .quiz-counter{text-align:center;color:var(--n4);font-size:.85rem;margin-bottom:24px}
+        .quiz-q{display:none;animation:fadeIn .4s ease}.quiz-q.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+        .quiz-q h3{margin-bottom:20px;font-size:1.15rem;text-align:center}
+        .quiz-opts{display:flex;flex-direction:column;gap:10px}
+        .quiz-opt{background:var(--n5);border:2px solid transparent;border-radius:14px;padding:16px 20px;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);font-family:inherit;font-size:.95rem;text-align:left}
+        .quiz-opt:hover{border-color:var(--tl);background:var(--tg)}
+        .quiz-opt.sel{border-color:var(--t);background:var(--tg);color:var(--t2);font-weight:600}
+
+        /* RESULT */
+        .quiz-res{display:none;animation:fadeIn .4s ease}.quiz-res.active{display:block;text-align:center}
+        .res-icon{font-size:3rem;margin-bottom:16px}
+        .res-profile{font-size:1.8rem;font-weight:800;color:var(--t);margin-bottom:8px}
+        .res-desc{color:var(--n3);margin-bottom:24px;font-size:1.05rem;line-height:1.7}
+        .res-card{background:var(--n5);border-radius:20px;padding:28px;margin-bottom:24px;text-align:left}
+        .res-card h4{color:var(--t2);margin-bottom:8px}.res-card p{color:var(--n3);font-size:.95rem;line-height:1.7}
+        .res-timer{color:#ef4444;font-weight:700;margin:16px 0;font-size:1rem}
+        .res-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="wrap">
+        <a href="index.html" class="logo">Tsvetkova<span>ProAi</span></a>
+        <a href="index.html" class="back">← Вернуться на сайт</a>
+    </div>
+</nav>
+
+<div class="quiz-wrap">
+    <div class="quiz-box">
+        <div class="quiz-bar-wrap"><div class="quiz-bar" id="bar"></div></div>
+        <div class="quiz-counter" id="counter">Вопрос 1 из 10</div>
+
+        <div class="quiz-q active" data-q="1">
+            <h3>Что тебе больше всего нравится создавать?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="photo">Фотографии и портреты</div>
+                <div class="quiz-opt" data-v="art">Иллюстрации и арт</div>
+                <div class="quiz-opt" data-v="video">Видео и анимацию</div>
+                <div class="quiz-opt" data-v="text">Тексты и посты</div>
+                <div class="quiz-opt" data-v="all">Хочу попробовать всё</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="2">
+            <h3>Какой у тебя опыт с нейросетями?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="none">Ничего не пробовал(а)</div>
+                <div class="quiz-opt" data-v="little">Пробовал(а) пару раз</div>
+                <div class="quiz-opt" data-v="medium">Пользуюсь иногда</div>
+                <div class="quiz-opt" data-v="advanced">Пользуюсь регулярно</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="3">
+            <h3>Для чего тебе нейросети?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="hobby">Для себя и творчества</div>
+                <div class="quiz-opt" data-v="income">Чтобы зарабатывать</div>
+                <div class="quiz-opt" data-v="business">Для своего бизнеса</div>
+                <div class="quiz-opt" data-v="work">Для работы и клиентов</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="4">
+            <h3>Какая у тебя сфера?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="creative">Творчество и дизайн</div>
+                <div class="quiz-opt" data-v="marketing">Маркетинг и SMM</div>
+                <div class="quiz-opt" data-v="business">Бизнес и предпринимательство</div>
+                <div class="quiz-opt" data-v="other">Другое — просто интересно</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="5">
+            <h3>Что для тебя важнее в обучении?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="steps">Пошаговые инструкции — делай раз, делай два</div>
+                <div class="quiz-opt" data-v="examples">Разбор реальных примеров и кейсов</div>
+                <div class="quiz-opt" data-v="practice">Максимум практики с первого урока</div>
+                <div class="quiz-opt" data-v="feedback">Обратная связь от преподавателя</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="6">
+            <h3>Какой тип контента ты хочешь создавать?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="portraits">Портреты и нейрофото</div>
+                <div class="quiz-opt" data-v="products">Фото товаров и реклама</div>
+                <div class="quiz-opt" data-v="social">Контент для соцсетей</div>
+                <div class="quiz-opt" data-v="branding">Логотипы и брендинг</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="7">
+            <h3>Ты уже зарабатывал(а) на творческой работе?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="yes">Да, это мой основной доход</div>
+                <div class="quiz-opt" data-v="sometimes">Иногда беру заказы</div>
+                <div class="quiz-opt" data-v="want">Нет, но хочу начать</div>
+                <div class="quiz-opt" data-v="no">Нет, мне для себя</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="8">
+            <h3>На каком устройстве ты чаще всего?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="phone">Телефон</div>
+                <div class="quiz-opt" data-v="tablet">Планшет</div>
+                <div class="quiz-opt" data-v="pc">Компьютер / ноутбук</div>
+                <div class="quiz-opt" data-v="both">Поровну телефон и компьютер</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="9">
+            <h3>Сколько времени готов(а) уделять обучению?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="15min">15–30 минут в день</div>
+                <div class="quiz-opt" data-v="1hour">1 час в день</div>
+                <div class="quiz-opt" data-v="2hours">2+ часа в день</div>
+                <div class="quiz-opt" data-v="weekends">Только по выходным</div>
+            </div>
+        </div>
+
+        <div class="quiz-q" data-q="10">
+            <h3>Что больше всего мешает начать?</h3>
+            <div class="quiz-opts">
+                <div class="quiz-opt" data-v="where">Не знаю с чего начать</div>
+                <div class="quiz-opt" data-v="hard">Кажется что это сложно</div>
+                <div class="quiz-opt" data-v="time">Не хватает времени</div>
+                <div class="quiz-opt" data-v="trust">Не уверен(а) что получится</div>
+            </div>
+        </div>
+
+        <div class="quiz-res" id="res">
+            <div class="res-icon" id="resIcon"></div>
+            <div class="res-profile" id="rProf"></div>
+            <div class="res-desc" id="rDesc"></div>
+            <div class="res-card" id="resCard">
+                <h4 id="resRec"></h4>
+                <p id="resWhy"></p>
+            </div>
+            <div class="res-timer" id="rTimer">Скидка действует: 47:59:59</div>
+            <div class="res-btns">
+                <a href="index.html#pricing" class="btn">Смотреть тарифы</a>
+                <a href="index.html" class="btn btn-outline">Вернуться на сайт</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let cur=1,ans={};
+document.querySelectorAll('.quiz-opt').forEach(o=>{
+    o.addEventListener('click',function(){
+        const q=this.closest('.quiz-q'),n=+q.dataset.q;
+        q.querySelectorAll('.quiz-opt').forEach(x=>x.classList.remove('sel'));
+        this.classList.add('sel');ans[n]=this.dataset.v;
+        setTimeout(()=>{
+            if(n<10){
+                q.classList.remove('active');
+                document.querySelector(`.quiz-q[data-q="${n+1}"]`).classList.add('active');
+                cur=n+1;
+                document.getElementById('bar').style.width=(cur/10*100)+'%';
+                document.getElementById('counter').textContent=`Вопрос ${cur} из 10`;
+            } else showRes();
+        },400);
+    });
+});
+
+function showRes(){
+    document.querySelector('.quiz-q[data-q="10"]').classList.remove('active');
+    document.getElementById('bar').style.width='100%';
+    document.getElementById('counter').textContent='Готово!';
+    const p=profile();
+    document.getElementById('resIcon').textContent=p.icon;
+    document.getElementById('rProf').textContent=p.name;
+    document.getElementById('rDesc').textContent=p.desc;
+    document.getElementById('resRec').textContent=p.rec;
+    document.getElementById('resWhy').textContent=p.why;
+    document.getElementById('res').classList.add('active');
+    let h=47,m=59,s=59;const t=document.getElementById('rTimer');
+    setInterval(()=>{s--;if(s<0){s=59;m--}if(m<0){m=59;h--}if(h<0)h=0;
+    t.textContent=`Скидка действует: ${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`},1000);
+}
+
+function profile(){
+    const goal=ans[3],exp=ans[2],content=ans[6];
+
+    if(goal==='income'||ans[7]==='want'){
+        return{icon:'🚀',name:'Начинающий заработок',desc:'Ты хочешь монетизировать нейросети — это отличная цель. Курс даст тебе все инструменты для старта.',
+            rec:'Рекомендуем: 1 ступень — полный курс',why:'Фото, видео, тексты + поиск клиентов и воронка продаж. Всё что нужно чтобы начать зарабатывать.'};
+    }
+    if(goal==='business'){
+        return{icon:'💼',name:'Бизнес-применение',desc:'Нейросети сэкономят тебе время и деньги на контенте. Сможешь делать сам(а) то, за что раньше платил(а).',
+            rec:'Рекомендуем: 1 + 2 ступень — полный пакет',why:'Продвинутые техники + TikTok и Reels для продвижения бизнеса. Максимум навыков.'};
+    }
+    if(goal==='work'){
+        return{icon:'💻',name:'Профессиональный рост',desc:'Нейросети — это суперсила для любого специалиста. Умение работать с ИИ выделит тебя среди конкурентов.',
+            rec:'Рекомендуем: 1 ступень — полный курс',why:'60+ навыков, которые можно применить в любой работе. Фото, видео, тексты, автоматизация.'};
+    }
+    if(exp==='none'||exp==='little'){
+        return{icon:'🎨',name:'Творческий старт',desc:'Нейросети — это проще, чем кажется. Начни с мини-курса и убедись сам(а).',
+            rec:'Рекомендуем: Быстрый старт — мини-курс за 1 990₽',why:'5 уроков, пошаговые инструкции, 50 промптов. Идеально для первого знакомства с нейросетями.'};
+    }
+    if(content==='portraits'){
+        return{icon:'📸',name:'Мастер нейрофото',desc:'Портреты — самый популярный формат. Нейросети делают потрясающие фото, которые невозможно отличить от настоящих.',
+            rec:'Рекомендуем: 1 ступень — полный курс',why:'Генерация, стилизация, обработка — всё про фото и портреты. Плюс поиск клиентов.'};
+    }
+    return{icon:'✨',name:'Творческий исследователь',desc:'Ты хочешь попробовать всё — и это правильно. Нейросети открывают безграничные возможности для творчества.',
+        rec:'Рекомендуем: 1 + 2 ступень — полный пакет',why:'Фото, видео, тексты, арт, логотипы — всё в одном курсе. Максимум навыков и возможностей.'};
+}
+</script>
+
+</body>
+</html>
