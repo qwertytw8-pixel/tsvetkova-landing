@@ -473,7 +473,7 @@
     <div class="wrap">
         <div class="try-bot-inner fade-up">
             <h2>Попробуй бесплатно</h2>
-            <p>3 бесплатные генерации в боте Nano Banana — создавай фото с помощью нейросетей прямо сейчас</p>
+            <p>3 бесплатные генерации в боте TsvetkovaProAi — создавай фото с помощью нейросетей прямо сейчас</p>
             <div class="try-bot-features">
                 <div class="try-bot-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Без регистрации</div>
                 <div class="try-bot-feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>Результат за минуту</div>
@@ -604,7 +604,7 @@
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><div><h4>Telegram</h4><p><a href="https://t.me/TsvetkovaKaterina">@TsvetkovaKaterina</a></p></div></div>
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/></svg></div><div><h4>Канал промптов</h4><p><a href="https://t.me/prompt_tyt">@prompt_tyt</a></p></div></div>
                 <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><h4>Группа</h4><p><a href="https://t.me/TsvetkovaProAi">@TsvetkovaProAi</a></p></div></div>
-                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M7 20s1-4 5-4 5 4 5 4"/><circle cx="17" cy="7" r="1.5"/></svg></div><div><h4>Бот Nano Banana</h4><p><a href="https://t.me/TsvetkovaProAi_bot">@TsvetkovaProAi_bot</a></p></div></div>
+                <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="12" cy="10" r="3"/><path d="M7 20s1-4 5-4 5 4 5 4"/><circle cx="17" cy="7" r="1.5"/></svg></div><div><h4>Бот TsvetkovaProAi</h4><p><a href="https://t.me/TsvetkovaProAi_bot">@TsvetkovaProAi_bot</a></p></div></div>
             </div>
             <form class="contact-form" onsubmit="sendToTelegram(event)">
                 <input type="text" placeholder="Ваше имя" required id="contactName">
@@ -650,7 +650,8 @@ const sectionIds=Array.from(document.querySelectorAll('section[id]')).map(s=>s.i
 const scrollBtnEl=document.getElementById('scrollBtn');
 function scrollToSection(){const scrollY=window.pageYOffset;if(scrollBtnEl.classList.contains('up')){window.scrollTo({top:0,behavior:'smooth'});return}for(let i=0;i<sectionIds.length;i++){const sec=document.getElementById(sectionIds[i]);if(sec&&sec.offsetTop>scrollY+100){sec.scrollIntoView({behavior:'smooth'});return}}window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 window.addEventListener('scroll',function(){if(window.pageYOffset>300){scrollBtnEl.classList.add('up');scrollBtnEl.title='Наверх'}else{scrollBtnEl.classList.remove('up');scrollBtnEl.title='Вниз'}},{passive:true})
-function sendToTelegram(e){e.preventDefault();const n=document.getElementById('contactName').value,c=document.getElementById('contactContact').value,m=document.getElementById('contactMsg').value;window.open(`https://t.me/TsvetkovaKaterina?text=${encodeURIComponent('📝 Заявка\n\n👤 '+n+'\n📱 '+c+'\n💬 '+m)}`,'_blank')}
+const WORKER_URL='WORKER_URL_PLACEHOLDER';
+async function sendToTelegram(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');const origText=btn.textContent;btn.disabled=true;btn.textContent='Отправка...';try{const res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:document.getElementById('contactName').value,contact:document.getElementById('contactContact').value,message:document.getElementById('contactMsg').value})});if(res.ok){btn.textContent='✓ Отправлено!';btn.style.background='#4CAF50';e.target.reset();setTimeout(()=>{btn.textContent=origText;btn.style.background='';btn.disabled=false},3000)}else{throw new Error('Server error')}}catch(err){btn.textContent='Ошибка, попробуйте ещё раз';btn.style.background='#f44336';setTimeout(()=>{btn.textContent=origText;btn.style.background='';btn.disabled=false},3000)}}
 </script>
 </body>
 </html>
