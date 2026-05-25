@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TsvetkovaProAi — Курс по нейросетям</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta property="og:title" content="TsvetkovaProAi — Курс по нейросетям">
     <meta property="og:description" content="Практический курс: фото, видео и тексты с помощью нейросетей. 60+ навыков за 10 недель.">
     <meta property="og:image" content="https://qwertytw8-pixel.github.io/tsvetkova-landing/media/ekaterina.jpg">
@@ -203,9 +205,20 @@
         .timer-bar h3{font-size:.95rem;margin-bottom:6px;font-weight:600;color:var(--n2)}
         .timer-val{font-size:1.8rem;font-weight:800;color:#ef4444}
 
+        /* CASES */
+        .cases{padding:80px 0}
+        .cases-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+        .case-card{background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.05);border-radius:20px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,.03)}
+        .case-label{display:inline-block;padding:3px 12px;border-radius:20px;font-size:.72rem;font-weight:700;margin-bottom:10px}
+        .case-label.before{background:rgba(239,68,68,.08);color:#ef4444}
+        .case-label.after{background:rgba(0,188,212,.1);color:var(--t)}
+        .case-card h3{font-size:1rem;margin-bottom:6px}
+        .case-card p{color:var(--n3);font-size:.84rem;line-height:1.6}
+        .case-arrow{display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:var(--t);font-weight:800}
+
         /* WHY */
         .why{padding:80px 0}
-        .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+        .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
         .why-card{padding:22px;background:rgba(255,255,255,.7);border:1px solid rgba(0,0,0,.04);border-radius:16px;transition:all .25s;box-shadow:0 2px 10px rgba(0,0,0,.03)}
         .why-card:hover{box-shadow:0 6px 20px rgba(0,188,212,.07)}
         .why-icon{width:38px;height:38px;border-radius:10px;background:var(--tg);display:flex;align-items:center;justify-content:center;margin-bottom:10px}
@@ -284,6 +297,7 @@
             .reviews-scroll{padding:0}
             .scroll-nav{display:none}
             .reviews-nav-mobile{display:flex}
+            .cases-grid{grid-template-columns:1fr;gap:12px}
             .why-grid{grid-template-columns:1fr;gap:10px}
             .how-steps{grid-template-columns:1fr 1fr;gap:12px}
 
@@ -568,14 +582,46 @@
 
 <div class="divider"></div>
 
+<!-- CASES -->
+<section class="cases bg-light">
+    <div class="wrap">
+        <h2 class="fade-up">Истории учеников</h2>
+        <div class="cases-grid">
+            <div class="case-card fade-up stagger-1">
+                <span class="case-label before">До курса</span>
+                <h3>Мария, мама в декрете</h3>
+                <p>Никогда не работала с нейросетями. Думала, что это сложно и только для программистов. Хотела подрабатывать из дома, но не знала с чего начать.</p>
+            </div>
+            <div class="case-card fade-up stagger-2">
+                <span class="case-label after">После курса</span>
+                <h3>Мария создаёт контент на заказ</h3>
+                <p>За 10 недель освоила генерацию фото и видео. Теперь делает контент для соцсетей, карточки для маркетплейсов и нейрофото для клиентов. Зарабатывает от 30 000 ₽/мес, работая из дома по свободному графику.</p>
+            </div>
+            <div class="case-card fade-up stagger-3">
+                <span class="case-label before">До курса</span>
+                <h3>Дмитрий, фрилансер</h3>
+                <p>Делал дизайн вручную, тратил 3–4 часа на одну карточку товара. Про нейросети слышал, но не понимал как их использовать в работе.</p>
+            </div>
+            <div class="case-card fade-up stagger-4">
+                <span class="case-label after">После курса</span>
+                <h3>Дмитрий делает за 10 минут то, что раньше занимало часы</h3>
+                <p>Научился составлять промпты, генерировать изображения и монтировать видео с помощью ИИ. Карточка товара теперь занимает 10 минут вместо 4 часов. Клиентов стало вдвое больше.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- WHY -->
 <section class="why bg-light">
     <div class="wrap">
         <h2 class="fade-up">Почему выбирают нас</h2>
         <div class="why-grid">
-            <div class="why-card fade-up stagger-1"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Живое сообщество</h3><p>Ученики помогают друг другу и делятся результатами</p></div>
-            <div class="why-card fade-up stagger-2"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Практика с первого дня</h3><p>Каждый урок — реальный результат</p></div>
-            <div class="why-card fade-up stagger-3"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Актуальные инструменты</h3><p>Современные нейросети которые реально используются</p></div>
+            <div class="why-card fade-up stagger-1"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h3>Личная поддержка Екатерины</h3><p>Отвечает на вопросы, помогает каждому ученику. Даёт обратную связь по работам и подсказывает, как улучшить.</p></div>
+            <div class="why-card fade-up stagger-2"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h3>Лёгкий старт без опыта</h3><p>Подробно объясняем где регистрироваться, как настроить, какие нейросети использовать. Пошагово, без сложных терминов.</p></div>
+            <div class="why-card fade-up stagger-3"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>Скидки на нейросети</h3><p>Екатерина делится актуальными скидками и промокодами на платные нейросети. Экономия может окупить стоимость всего курса.</p></div>
+            <div class="why-card fade-up stagger-4"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div><h3>От фото до статей</h3><p>Не только изображения — учим создавать видео, Reels, статьи для соцсетей, инфографику, 3D-модели и печатную продукцию.</p></div>
         </div>
     </div>
 </section>
