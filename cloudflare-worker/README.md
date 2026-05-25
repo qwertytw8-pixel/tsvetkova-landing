@@ -18,7 +18,7 @@
 1. Перейди в настройки Worker'а → **Settings** → **Variables**
 2. Добавь:
    - `TELEGRAM_BOT_TOKEN` — токен бота (получить у @BotFather в Telegram)
-   - `TELEGRAM_CHAT_ID` — твой chat_id (узнать, написав @userinfobot в Telegram)
+   - `TELEGRAM_CHAT_IDS` — chat_id получателей через запятую (например: `522370840,8529853732,960038072`)
 3. Нажми **Encrypt** для каждой переменной и **Save**
 
 ### 4. Обновить URL на сайте
