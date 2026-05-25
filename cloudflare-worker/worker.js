@@ -1,7 +1,7 @@
 // Cloudflare Worker: принимает данные формы и отправляет в Telegram
 // Переменные окружения (настраиваются в Cloudflare Dashboard):
 //   TELEGRAM_BOT_TOKEN — токен бота от @BotFather
-//   TELEGRAM_CHAT_ID   — chat_id получателя (узнать через @userinfobot)
+//   TELEGRAM_CHAT_IDS  — chat_id получателей через запятую (например: 123,456,789)
 
 const ALLOWED_ORIGINS = [
   'https://qwertytw8-pixel.github.io',
@@ -55,22 +55,20 @@ export default {
         `🕐 ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}`,
       ].filter(Boolean).join('\n');
 
-      const tgResponse = await fetch(
-        `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: env.TELEGRAM_CHAT_ID,
-            text,
-            parse_mode: 'HTML',
-          }),
-        }
+      const chatIds = env.TELEGRAM_CHAT_IDS.split(',').map(id => id.trim());
+      const results = await Promise.all(
+        chatIds.map(chatId =>
+          fetch(`https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML' }),
+          })
+        )
       );
 
-      if (!tgResponse.ok) {
-        const err = await tgResponse.text();
-        console.error('Telegram API error:', err);
+      const failed = results.filter(r => !r.ok);
+      if (failed.length === results.length) {
+        console.error('Telegram API error: all sends failed');
         return new Response(JSON.stringify({ error: 'Failed to send message' }), {
           status: 502,
           headers: { ...headers, 'Content-Type': 'application/json' },
