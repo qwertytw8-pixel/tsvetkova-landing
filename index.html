@@ -72,10 +72,10 @@
         .hero-stat{text-align:center}.hero-stat .num{font-size:1.6rem;font-weight:800;color:var(--t)}.hero-stat .label{font-size:.78rem;color:var(--n4);margin-top:2px}
 
         /* SCROLL DOWN */
-        .scroll-down{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:90;transition:all .25s;animation:bounceDown 2s ease-in-out infinite}
-        .scroll-down:hover{transform:translateY(3px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
-        .scroll-down svg{width:18px;height:18px;color:var(--t)}
-        @keyframes bounceDown{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+        .scroll-btn{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:rgba(255,255,255,.8);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.08);z-index:90;transition:all .25s;text-decoration:none}
+        .scroll-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.12)}
+        .scroll-btn svg{width:18px;height:18px;color:var(--t);transition:transform .3s}
+        .scroll-btn.up svg{transform:rotate(180deg)}
 
         /* SECTIONS */
         .bg-white{background:rgba(255,255,255,.6);backdrop-filter:blur(12px)}
@@ -141,7 +141,7 @@
         .review-info h4{font-size:.92rem;font-weight:700;margin-bottom:1px}.review-info span{font-size:.75rem;color:var(--n4)}
         .review-stars{color:var(--t);font-size:.88rem;margin-bottom:8px;letter-spacing:2px}
         .review-text{color:var(--n2);font-size:.88rem;line-height:1.7;max-height:1000px;transition:max-height .4s cubic-bezier(.4,0,.2,1),opacity .3s}
-        .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-height:3.2em}
+        .review-text.collapsed{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;max-height:6.4em}
         .review-toggle{background:none;border:none;color:var(--t);font-family:inherit;font-weight:700;font-size:.82rem;cursor:pointer;padding:4px 0;margin-top:8px;transition:color .2s}
         .review-toggle:hover{color:var(--t2)}
         .scroll-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.1);z-index:2;transition:all .2s,opacity .3s}
@@ -149,6 +149,10 @@
         .scroll-nav svg{width:16px;height:16px;color:var(--n1)}
         .scroll-prev{left:0}
         .scroll-next{right:0}
+        .reviews-nav-mobile{display:none;justify-content:center;gap:16px;margin-top:16px}
+        .reviews-nav-mobile button{width:44px;height:44px;background:rgba(255,255,255,.9);backdrop-filter:blur(8px);border:1px solid rgba(0,0,0,.08);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,.08);transition:all .2s}
+        .reviews-nav-mobile button:hover{box-shadow:0 4px 16px rgba(0,0,0,.12)}
+        .reviews-nav-mobile button svg{width:16px;height:16px;color:var(--n1)}
 
         /* PRICING — FULLSCREEN */
         .pricing{padding:100px 0}
@@ -245,13 +249,12 @@
             .reviews{padding:60px 0}
             .review-card{flex:0 0 calc(100vw - 48px);scroll-snap-align:center;padding:24px}
             .reviews-scroll{padding:0}
-            .scroll-nav{width:32px;height:32px}
-            .scroll-prev{left:4px}
-            .scroll-next{right:4px}
+            .scroll-nav{display:none}
+            .reviews-nav-mobile{display:flex}
             .why-grid{grid-template-columns:1fr;gap:10px}
             .how-steps{grid-template-columns:1fr 1fr;gap:12px}
 
-            .scroll-down{bottom:16px;right:16px;width:38px;height:38px}
+            .scroll-btn{bottom:16px;right:16px;width:38px;height:38px}
             .section-full{min-height:auto}
         }
         @media(max-width:480px){
@@ -423,6 +426,10 @@
             </div>
             <button class="scroll-nav scroll-next" onclick="scrollReviews(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         </div>
+        <div class="reviews-nav-mobile">
+            <button onclick="scrollReviews(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button onclick="scrollReviews(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
     </div>
 </section>
 
@@ -562,7 +569,7 @@
     </div>
 </footer>
 
-<a class="scroll-down" href="#for-whom" title="Вниз"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+<button class="scroll-btn" id="scrollBtn" onclick="scrollToSection()" title="Вниз"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></button>
 
 <script>
 function toggleMenu(){document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open')}
@@ -584,7 +591,11 @@ document.querySelectorAll('.carousel-item[data-video]').forEach(item=>{const v=i
 item.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0});item.addEventListener('click',()=>{if(v.paused){v.muted=false;v.play().catch(()=>{})}else{v.muted=!v.muted}})});
 let gh=47,gm=59,gs=59;setInterval(()=>{gs--;if(gs<0){gs=59;gm--}if(gm<0){gm=59;gh--}if(gh<0)gh=0;const gt=document.getElementById('globalTimer');if(gt)gt.textContent=`${gh}:${String(gm).padStart(2,'0')}:${String(gs).padStart(2,'0')}`},1000);
 document.querySelectorAll('.faq-q').forEach(q=>q.addEventListener('click',function(){this.closest('.faq-item').classList.toggle('open')}));
-function toggleReview(id,btn){const el=document.getElementById(id);const card=el.closest('.review-card');if(el.classList.contains('collapsed')){el.classList.remove('collapsed');el.style.maxHeight=el.scrollHeight+'px';btn.textContent='Свернуть';card.style.zIndex='5'}else{el.style.maxHeight='3.2em';setTimeout(()=>{el.classList.add('collapsed');card.style.zIndex=''},350);btn.textContent='Читать полностью'}}
+function toggleReview(id,btn){const el=document.getElementById(id);const card=el.closest('.review-card');if(el.classList.contains('collapsed')){el.classList.remove('collapsed');el.style.maxHeight=el.scrollHeight+'px';btn.textContent='Свернуть';card.style.zIndex='5'}else{el.style.maxHeight='6.4em';setTimeout(()=>{el.classList.add('collapsed');card.style.zIndex=''},350);btn.textContent='Читать полностью'}}
+const sectionIds=Array.from(document.querySelectorAll('section[id]')).map(s=>s.id);
+const scrollBtnEl=document.getElementById('scrollBtn');
+function scrollToSection(){const scrollY=window.pageYOffset;if(scrollBtnEl.classList.contains('up')){window.scrollTo({top:0,behavior:'smooth'});return}for(let i=0;i<sectionIds.length;i++){const sec=document.getElementById(sectionIds[i]);if(sec&&sec.offsetTop>scrollY+100){sec.scrollIntoView({behavior:'smooth'});return}}window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
+window.addEventListener('scroll',function(){if(window.pageYOffset>300){scrollBtnEl.classList.add('up');scrollBtnEl.title='Наверх'}else{scrollBtnEl.classList.remove('up');scrollBtnEl.title='Вниз'}},{passive:true})
 function sendToTelegram(e){e.preventDefault();const n=document.getElementById('contactName').value,c=document.getElementById('contactContact').value,m=document.getElementById('contactMsg').value;window.open(`https://t.me/TsvetkovaKaterina?text=${encodeURIComponent('📝 Заявка\n\n👤 '+n+'\n📱 '+c+'\n💬 '+m)}`,'_blank')}
 </script>
 </body>
