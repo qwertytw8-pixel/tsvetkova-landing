@@ -27,7 +27,7 @@
         .btn-lg{padding:18px 44px;font-size:1.05rem}
         .fade-up{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.16,1,.3,1)}
         .fade-up.visible{opacity:1;transform:translateY(0)}
-        .stagger-1{transition-delay:.08s}.stagger-2{transition-delay:.16s}.stagger-3{transition-delay:.24s}.stagger-4{transition-delay:.32s}
+        .stagger-1{transition-delay:.08s}.stagger-2{transition-delay:.16s}.stagger-3{transition-delay:.24s}.stagger-4{transition-delay:.32s}.stagger-5{transition-delay:.40s}
 
         /* MESH BG */
         .mesh-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(135deg,#e6f5f7 0%,#d4eef2 30%,#f0f4f8 60%,#e8f0f4 100%)}
@@ -213,7 +213,7 @@
 
         /* HOW */
         .how{padding:80px 0}
-        .how-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:step}
+        .how-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:step}
         .how-step{counter-increment:step;text-align:center}
         .how-step::before{content:counter(step);display:block;width:40px;height:40px;margin:0 auto 10px;background:linear-gradient(135deg,var(--t),var(--t2));color:var(--white);border-radius:12px;font-weight:800;font-size:.95rem;line-height:40px}
         .how-step h3{margin-bottom:4px;font-size:.92rem}.how-step p{color:var(--n3);font-size:.82rem;line-height:1.4}
@@ -346,8 +346,8 @@
             <div class="author-photo"><img src="media/ekaterina.jpg" alt="Екатерина Цветкова" onerror="this.style.display='none'"></div>
             <div class="author-text">
                 <h3>Привет, я Екатерина</h3>
-                <p>Эксперт по нейросетям. Обучаю работе с ИИ — от генерации фото и видео до текстов и бизнес-применения. Через мои курсы прошли десятки учеников, которые начали с нуля и теперь создают профессиональный контент на заказ.</p>
-                <p>Создатель бота TsvetkovaProAi для генерации изображений. Автор канала промптов с 1 000+ подписчиков. Помогаю каждому ученику лично.</p>
+                <p>Привет! Я Екатерина, эксперт по нейросетям и лидер команды, которая обучает работе с ИИ: от генерации фото и видео до создания текстов и их бизнес-применения. Вместе с командой мы помогаем ученикам — десятки людей уже прошли наши курсы, начав с нуля, и теперь создают профессиональный контент на заказ.</p>
+                <p>Мы разработали бота TsvetkovaProAi для генерации изображений и ведём канал с промптами, на который подписались более 1 000 человек. Наша цель — помочь каждому ученику раскрыть потенциал искусственного интеллекта и достичь своих целей.</p>
                 <div class="author-stats">
                     <div class="author-stat"><div class="num">20+</div><div class="label">учеников</div></div>
                     <div class="author-stat"><div class="num">1 000+</div><div class="label">подписчиков</div></div>
@@ -563,6 +563,7 @@
             <div class="how-step fade-up stagger-2"><h3>Смотришь уроки</h3><p>Видео + инструкции</p></div>
             <div class="how-step fade-up stagger-3"><h3>Делаешь практику</h3><p>Фото, видео, тексты</p></div>
             <div class="how-step fade-up stagger-4"><h3>Получаешь результат</h3><p>Портфолио + навыки</p></div>
+            <div class="how-step fade-up stagger-5"><h3>Получаешь сертификат</h3><p>Подтверждение прохождения курса</p></div>
         </div>
     </div>
 </section>
@@ -651,7 +652,7 @@ const sectionIds=Array.from(document.querySelectorAll('section[id]')).map(s=>s.i
 const scrollBtnEl=document.getElementById('scrollBtn');
 function scrollToSection(){const scrollY=window.pageYOffset;if(scrollBtnEl.classList.contains('up')){window.scrollTo({top:0,behavior:'smooth'});return}for(let i=0;i<sectionIds.length;i++){const sec=document.getElementById(sectionIds[i]);if(sec&&sec.offsetTop>scrollY+100){sec.scrollIntoView({behavior:'smooth'});return}}window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})}
 window.addEventListener('scroll',function(){if(window.pageYOffset>300){scrollBtnEl.classList.add('up');scrollBtnEl.title='Наверх'}else{scrollBtnEl.classList.remove('up');scrollBtnEl.title='Вниз'}},{passive:true})
-const WORKER_URL='WORKER_URL_PLACEHOLDER';
+const WORKER_URL='https://tsvetkova-form.qwertytw8.workers.dev';
 async function sendToTelegram(e){e.preventDefault();const btn=e.target.querySelector('button[type="submit"]');const origText=btn.textContent;btn.disabled=true;btn.textContent='Отправка...';try{const res=await fetch(WORKER_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:document.getElementById('contactName').value,contact:document.getElementById('contactContact').value,message:document.getElementById('contactMsg').value})});if(res.ok){btn.textContent='✓ Отправлено!';btn.style.background='#4CAF50';e.target.reset();setTimeout(()=>{btn.textContent=origText;btn.style.background='';btn.disabled=false},3000)}else{throw new Error('Server error')}}catch(err){btn.textContent='Ошибка, попробуйте ещё раз';btn.style.background='#f44336';setTimeout(()=>{btn.textContent=origText;btn.style.background='';btn.disabled=false},3000)}}
 </script>
 </body>
